@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "poetry-plugin-latest"
+version = "0.0.0"
+description = "poetry plugin to register new command to check if all dependencies are up-to-date"
+authors = ["Christoph Dörrer <d-chris@web.de>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+poetry = ">=1.8.0,<3.0.0"
+poetry-core = ">=1.7.0,<3.0.0"
+
+[tool.poetry.plugins."poetry.application.plugin"]
+latest = "poetry_plugin_latest.latest:LatestPlugin"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
