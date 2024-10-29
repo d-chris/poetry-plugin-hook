@@ -2,50 +2,10 @@ import contextlib
 import re
 from typing import Generator
 
-import cleo.io.io
-import cleo.io.outputs.output
 from poetry.console.commands.show import ShowCommand
 from poetry.plugins.application_plugin import ApplicationPlugin
 
-
-class Output(cleo.io.outputs.output.Output):
-
-    @classmethod
-    def from_output(cls, output: cleo.io.outputs.output.Output) -> "Output":
-        instance = cls(
-            verbosity=output.verbosity,
-            decorated=output.is_decorated(),
-            formatter=output.formatter,
-        )
-
-        return instance
-
-    def _write(self, message: str, new_line: bool = False) -> None:
-        if new_line:
-            message += "\n"
-
-        try:
-            self._stdout.append(message)
-        except AttributeError:
-            self._stdout = [message]
-
-    def stdout(self) -> str:
-        return "".join(self._stdout)
-
-
-class IO(cleo.io.io.IO):
-
-    @classmethod
-    def from_io(cls, io: cleo.io.io.IO) -> "IO":
-        output = Output.from_output(io.output)
-
-        instance = cls(
-            input=io.input,
-            output=output,
-            error_output=io.error_output,
-        )
-
-        return instance
+from poetry_plugin_latest.wrapper import IO, Output
 
 
 class LatestCommand(ShowCommand):
@@ -58,6 +18,7 @@ class LatestCommand(ShowCommand):
     )
 
     _true_options = ["latest", "outdated", "top-level"]
+    _del_options = ["no-dev", "tree", "all", "why"]
 
     def configure(self) -> None:
         """
@@ -67,8 +28,9 @@ class LatestCommand(ShowCommand):
             None
         """
 
-        remove_options = ["no-dev", "tree", "all", "why"]
-        self.options = [opt for opt in self.options if opt.name not in remove_options]
+        self.options = [
+            option for option in self.options if option.name not in self._del_options
+        ]
 
         for opt in filter(lambda o: o.name in self._true_options, self.options):
             opt._description += " <warning>(option is always True)</warning>"
@@ -79,7 +41,11 @@ class LatestCommand(ShowCommand):
     def redirect_output(self) -> Generator[Output, None, None]:
         """
         Redirects output to a custom Output object.
+
+        Yields:
+            Output: The custom Output object to which the output is redirected.
         """
+
         try:
             io = self.io
 
