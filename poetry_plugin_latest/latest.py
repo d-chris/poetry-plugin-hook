@@ -10,7 +10,7 @@ from poetry_plugin_latest.wrapper import IO, Output
 
 class LatestCommand(ShowCommand):
     name = "latest"
-    description = "Check if all top-level dependencies are up-to-date"
+    description = "Check if all top-level dependencies are up-to-date."
 
     _regex = re.compile(
         r"^(?P<package>\S+)\s+(?P<current>\S+)\s+(?P<latest>\S+)\s+(?P<comment>.*?)$",

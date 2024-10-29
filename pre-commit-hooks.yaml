@@ -1,0 +1,7 @@
+- id: poetry-latest
+  name: poetry-latest
+  description: Check if all top-level dependencies are up-to-date.
+  entry: poetry latest
+  language: python
+  pass_filenames: false
+  always_run: true
