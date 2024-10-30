@@ -9,7 +9,9 @@ from .redirect import buffered_io, strip_ansi
 
 class SyncCommand(InstallCommand):
     name = "hook sync"
-    description = "Install the current project and synchronize the environment."
+    description = (
+        "Synchronize the environment with the locked packages and the specified groups."
+    )
     help = ""
 
     _true_options = ["sync"]
@@ -64,11 +66,15 @@ class SyncCommand(InstallCommand):
             stdout = io.fetch_output()
 
         # parse the output for matching lines and take the last one
-        match: re.Match = list(
-            self._operations.finditer(
-                strip_ansi(stdout),
-            )
-        )[-1]
+        try:
+            match: re.Match = list(
+                self._operations.finditer(
+                    strip_ansi(stdout),
+                )
+            )[-1]
+        except IndexError:
+            self.line("No dependencies to install or update.")
+            return 0
 
         # retrive the exit code
         try:

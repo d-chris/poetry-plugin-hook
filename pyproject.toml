@@ -1,18 +1,35 @@
+[build-system]
+build-backend = "poetry.core.masonry.api"
+requires = [ "poetry-core" ]
+
 [tool.poetry]
 name = "poetry-plugin-hook"
 version = "0.0.0"
-description = "poetry plugin to register new command to check if all dependencies are up-to-date"
-authors = ["Christoph Dörrer <d-chris@web.de>"]
+description = "poetry plugin to register wrapped commands to use ase pre-commit-hooks"
+authors = [ "Christoph Dörrer <d-chris@web.de>" ]
+license = "MIT"
 readme = "README.md"
+classifiers = [
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+]
+keywords = [ "poetry", "pre-commit", "plugin", "hook" ]
+
+[tool.poetry.urls]
+repository = "https://github.com/d-chris/poetry-plugin-hook"
 
 [tool.poetry.dependencies]
 python = "^3.9"
-poetry = "^1.8.0"
+poetry = "^1.7.0"
 cleo = "^2.1.0"
 
 [tool.poetry.plugins."poetry.application.plugin"]
 hook = "poetry_plugin_hook:HookPlugin"
 
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+[tool.isort]
+profile = "black"

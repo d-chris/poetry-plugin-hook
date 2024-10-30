@@ -1,38 +1,58 @@
-# poetry-plugin-latest
+# poetry-plugin-hook
 
-poetry plugin to add a command to check if all dependencies are up-to-date
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/poetry-plugin-hook)](https://pypi.org/project/poetry-plugin-hook/)
+[![PyPI - Version](https://img.shields.io/pypi/v/poetry-plugin-hook)](https://pypi.org/project/poetry-plugin-hook/)
+[![PyPI - License](https://img.shields.io/pypi/l/poetry-plugin-hook)](https://raw.githubusercontent.com/d-chris/poetry-plugin-hook/main/LICENSE)
+[![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit)](https://raw.githubusercontent.com/d-chris/poetry-plugin-hook/main/.pre-commit-config.yaml)
+<!-- [![PyPI - Downloads](https://img.shields.io/pypi/dm/poetry-plugin-hook)](https://pypi.org/project/poetry-plugin-hook/) -->
+<!-- [![GitHub - Release](https://img.shields.io/github/v/tag/d-chris/poetry-plugin-hook?logo=github&label=github)](https://github.com/d-chris/poetry-plugin-hook) -->
+<!-- [![GitHub - Pytest](https://img.shields.io/github/actions/workflow/status/d-chris/poetry-plugin-hook/pytest.yml?logo=github&label=pytest)](https://github.com/d-chris/poetry-plugin-hook/actions/workflows/pytest.yml) -->
+<!-- [![GitHub - Page](https://img.shields.io/website?url=https%3A%2F%2Fd-chris.github.io%2Fpoetry-plugin-hook&up_message=pdoc&logo=github&label=documentation)](https://d-chris.github.io/poetry-plugin-hook) -->
+<!-- [![codecov](https://codecov.io/gh/d-chris/poetry-plugin-hook/graph/badge.svg?token=U7I9FYMRSR)](https://codecov.io/gh/d-chris/poetry-plugin-hook) -->
 
-```cmd
-$ poetry latest --help
+---
 
-Description:
-  Check if all top-level dependencies are up-to-date
+`poetry` plugin to register wrapped commands to use ase `pre-commit-hooks`. all hook commands return zero on success and non-zero on failure.
 
-Usage:
-  latest [options] [--] [<package>]
+## install
 
-Arguments:
-  package                    The package to inspect
-
-Options:
-      --without=WITHOUT      The dependency groups to ignore. (multiple values allowed)
-      --with=WITH            The optional dependency groups to include. (multiple values allowed)
-      --only=ONLY            The only dependency groups to include. (multiple values allowed)
-  -l, --latest               Show the latest version. (option is always True)
-  -o, --outdated             Show the latest version but only for packages that are outdated. (option is always True)
-  -T, --top-level            Show only top-level dependencies. (option is always True)
-  -h, --help                 Display help for the given command. When no command is given display help for the list command.
-  -q, --quiet                Do not output any message.
-  -V, --version              Display this application version.
-      --ansi                 Force ANSI output.
-      --no-ansi              Disable ANSI output.
-  -n, --no-interaction       Do not ask any interactive question.
-      --no-plugins           Disables plugins.
-      --no-cache             Disables Poetry source caches.
-  -C, --directory=DIRECTORY  The working directory for the Poetry command (defaults to the current working directory).
-  -v|vv|vvv, --verbose       Increase the verbosity of messages: 1 for normal output, 2 for more verbose output and 3 for debug.
-
-Help:
-  The show command displays detailed information about a package, or
-  lists all packages available.
+```shell
+$ pip install poetry-plugin-hook
 ```
+
+or with `poetry`
+
+```shell
+$ poetry self add poetry-plugin-hook
+```
+
+## hook latest
+
+Wrapper for `poetry show -o -T` command.
+
+Exit code represents the number of outdated packages.
+
+```bash
+$ poetry hook latest && echo exit-code: $?
+
+All top-level dependencies are up-to-date.
+exit-code: 0
+```
+
+## hook sync
+
+Wrapper for `poetry install --sync` command.
+
+With `--exit` option, the command returns the corresponding value as exit code. With it's default `--exit=any` the sum of *installs*, *updates* and *removals* is returned.
+
+```bash
+$ poetry hook sync --dry-run && echo exit-code: $?
+
+No dependencies to install or update.
+exit-code: 0
+```
+
+## Dependencies
+
+[![PyPI - cleo](https://img.shields.io/pypi/v/cleo?logo=pypi&logoColor=white&label=cleo)](https://pypi.org/project/cleo/)
+[![PyPI - poetry](https://img.shields.io/pypi/v/poetry?logo=poetry&logoColor=white&label=poetry)](https://pypi.org/project/poetry/)
