@@ -9,6 +9,7 @@ readme = "README.md"
 python = "^3.9"
 poetry = ">=1.8.0,<3.0.0"
 poetry-core = ">=1.7.0,<3.0.0"
+cleo = "<3.0.0"
 
 [tool.poetry.plugins."poetry.application.plugin"]
 latest = "poetry_plugin_latest.latest:LatestPlugin"

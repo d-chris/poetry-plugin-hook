@@ -1,19 +1,20 @@
-import contextlib
 import re
-from typing import Generator
 
 from poetry.console.commands.show import ShowCommand
 from poetry.plugins.application_plugin import ApplicationPlugin
 
-from poetry_plugin_latest.wrapper import IO, Output
+from poetry_plugin_latest.redirect import buffered_io, strip_ansi
 
 
 class LatestCommand(ShowCommand):
     name = "latest"
     description = "Check if all top-level dependencies are up-to-date."
 
-    _regex = re.compile(
-        r"^(?P<package>\S+)\s+(?P<current>\S+)\s+(?P<latest>\S+)\s+(?P<comment>.*?)$",
+    _dependencies = re.compile(
+        r"^(?P<package>\w\S+)\s+"
+        r"(?P<current>\d\S+)\s+"
+        r"(?P<latest>\d\S+)\s+"
+        r"(?P<description>\w.*?)$",
         re.MULTILINE,
     )
 
@@ -37,24 +38,6 @@ class LatestCommand(ShowCommand):
 
         super().configure()
 
-    @contextlib.contextmanager
-    def redirect_output(self) -> Generator[Output, None, None]:
-        """
-        Redirects output to a custom Output object.
-
-        Yields:
-            Output: The custom Output object to which the output is redirected.
-        """
-
-        try:
-            io = self.io
-
-            self._io = IO.from_io(io)
-
-            yield self._io.output
-        finally:
-            self._io = io
-
     def handle(self) -> int:
         """
         Executes `poetry show -o -T` to check for outdated dependencies.
@@ -69,11 +52,17 @@ class LatestCommand(ShowCommand):
         for option in self._true_options:
             self.io.input.set_option(option, True)
 
-        with self.redirect_output() as redirect:
+        # redirect output to check for outdated dependencies
+        with buffered_io(self) as io:
             super().handle()
-            text = redirect.stdout()
+            text = io.fetch_output()
 
-        outdated = len(self._regex.findall(text))
+        # count outdated dependencies
+        outdated = len(
+            self._dependencies.findall(
+                strip_ansi(text),
+            )
+        )
 
         if outdated == 0:
             self.line("All top-level dependencies are up-to-date.")
