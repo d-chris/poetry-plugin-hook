@@ -1,9 +1,17 @@
 import contextlib
 import re
-from typing import Generator
+from abc import ABC, abstractmethod
+from typing import Generator, List
 
-import cleo.io.buffered_io as cleo
-import poetry.console.commands.command as poetry
+from cleo.io.buffered_io import BufferedIO
+from cleo.io.io import IO
+
+
+class CommandCleo(ABC):
+    @property
+    @abstractmethod
+    def _io(self) -> IO:
+        pass
 
 
 def strip_ansi(text: str) -> str:
@@ -21,43 +29,54 @@ def strip_ansi(text: str) -> str:
 
 @contextlib.contextmanager
 def buffered_io(
-    cmd: poetry.Command,
+    *args: CommandCleo,
     **kwargs,
-) -> Generator[cleo.BufferedIO, None, None]:
+) -> Generator[BufferedIO, None, None]:
     """
-    Context manager that temporarily replaces the I/O of a Poetry command with
-    a buffered I/O to capture it's output.
+    Context manager that temporarily replaces the I/O of multiple Poetry commands with
+    the same buffered I/O to capture their output.
 
     Args:
-        cmd (poetry.Command): The Poetry command whose I/O will be captured.
+        *cmds (List[CommandCleo]): The Poetry commands whose I/O will be captured.
         **kwargs: Additional keyword arguments to pass to the BufferedIO constructor.
 
     Yields:
-        cleo.BufferedIO: The buffered I/O object.
+        BufferedIO: The buffered I/O object.
+
+    Raises:
+        ValueError: If any of the commands does not have an I/O attribute.
 
     Example:
         ```python
-        # get ansi output from a command
-        with buffered_io(cmd, decorated=False) as io:
+        with buffered_ios(cmd1, cmd2, decorated=False) as io:
             # Perform operations with the buffered I/O
             output = io.fetch_output()
         ```
     """
+
+    # perform check if all commands have a `_io` attribute
+    original: List[IO] = []
+
+    for cmd in args:
+        if not hasattr(cmd, "_io"):
+            raise ValueError(f"Command {cmd} does not have an I/O attribute.")
+
+        original.append(cmd._io)
+
+    # create a new buffered I/O object
+    io = BufferedIO(
+        input=kwargs.pop("input", original[0].input),
+        decorated=kwargs.pop("decorated", original[0].output.is_decorated()),
+        **kwargs,
+    )
+
     try:
-        original = cmd.io
+        # assign the buffered I/O object to all commands
+        for cmd in args:
+            cmd._io = io
 
-        cmd._io = cleo.BufferedIO(
-            input=kwargs.pop(
-                "input",
-                original.input,
-            ),
-            decorated=kwargs.pop(
-                "decorated",
-                original.output.is_decorated(),
-            ),
-            **kwargs,
-        )
-
-        yield cmd.io
+        yield io
     finally:
-        cmd._io = original
+        # restore the original I/O objects
+        for cmd, original_io in zip(args, original):
+            cmd._io = original_io

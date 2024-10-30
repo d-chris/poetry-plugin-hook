@@ -1,14 +1,14 @@
 import re
 
 from poetry.console.commands.show import ShowCommand
-from poetry.plugins.application_plugin import ApplicationPlugin
 
 from poetry_plugin_latest.redirect import buffered_io, strip_ansi
 
 
 class LatestCommand(ShowCommand):
-    name = "latest"
+    name = "hook latest"
     description = "Check if all top-level dependencies are up-to-date."
+    help = ""
 
     _dependencies = re.compile(
         r"^(?P<package>\w\S+)\s+"
@@ -70,12 +70,3 @@ class LatestCommand(ShowCommand):
             self.line(text)
 
         return outdated
-
-
-def factory():
-    return LatestCommand()
-
-
-class LatestPlugin(ApplicationPlugin):
-    def activate(self, application):
-        application.command_loader.register_factory("latest", factory)
