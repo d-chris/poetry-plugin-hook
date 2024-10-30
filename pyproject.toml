@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "poetry-plugin-latest"
+name = "poetry-plugin-hook"
 version = "0.0.0"
 description = "poetry plugin to register new command to check if all dependencies are up-to-date"
 authors = ["Christoph Dörrer <d-chris@web.de>"]
@@ -11,7 +11,7 @@ poetry = "^1.8.0"
 cleo = "^2.1.0"
 
 [tool.poetry.plugins."poetry.application.plugin"]
-hook = "poetry_plugin_latest:HookPlugin"
+hook = "poetry_plugin_hook:HookPlugin"
 
 [build-system]
 requires = ["poetry-core"]

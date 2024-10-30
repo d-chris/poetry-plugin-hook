@@ -4,7 +4,7 @@ from cleo.exceptions import CleoError
 from cleo.helpers import option
 from poetry.console.commands.install import InstallCommand
 
-from poetry_plugin_latest.redirect import buffered_io, strip_ansi
+from .redirect import buffered_io, strip_ansi
 
 
 class SyncCommand(InstallCommand):
