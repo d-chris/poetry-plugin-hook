@@ -1,3 +1,7 @@
+"""
+.. include:: ../README.md
+"""
+
 from poetry.plugins.application_plugin import ApplicationPlugin
 
 from .latest import LatestCommand

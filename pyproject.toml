@@ -33,6 +33,10 @@ pytest = "^8.3.3"
 pytest-cov = "^6.0.0"
 pytest-randomly = "^3.16.0"
 
+[tool.poetry.group.docs.dependencies]
+pdoc = "^15.0.0"
+pathlibutil = "^0.3.3"
+
 [tool.poetry.plugins."poetry.application.plugin"]
 hook = "poetry_plugin_hook:HookPlugin"
 
