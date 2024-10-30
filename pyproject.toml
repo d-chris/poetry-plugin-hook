@@ -28,8 +28,24 @@ python = "^3.9"
 poetry = "^1.7.0"
 cleo = "^2.1.0"
 
+[tool.poetry.group.test.dependencies]
+pytest = "^8.3.3"
+pytest-cov = "^6.0.0"
+pytest-randomly = "^3.16.0"
+
 [tool.poetry.plugins."poetry.application.plugin"]
 hook = "poetry_plugin_hook:HookPlugin"
 
 [tool.isort]
 profile = "black"
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+testpaths = "tests"
+addopts = [
+  "--color=yes",
+  "-s",
+  "--cov=poetry_plugin_hook",
+  "--cov-report=term-missing:skip-covered",
+  "--cov-report=xml",
+]

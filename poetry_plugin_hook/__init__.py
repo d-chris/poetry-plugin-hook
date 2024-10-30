@@ -15,3 +15,9 @@ class HookPlugin(ApplicationPlugin):
             SyncCommand.name,
             lambda: SyncCommand(),
         )
+
+
+__all__ = [
+    "LatestCommand",
+    "SyncCommand",
+]
