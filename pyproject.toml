@@ -5,7 +5,7 @@ requires = [ "poetry-core" ]
 [tool.poetry]
 name = "poetry-plugin-hook"
 version = "0.0.0"
-description = "poetry plugin to register wrapped commands to use ase pre-commit-hooks"
+description = "poetry plugin to register wrapped commands to use as pre-commit-hooks"
 authors = [ "Christoph Dörrer <d-chris@web.de>" ]
 license = "MIT"
 readme = "README.md"

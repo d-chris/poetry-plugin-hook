@@ -7,7 +7,7 @@ from cleo.io.buffered_io import BufferedIO
 from cleo.io.io import IO
 
 
-class CommandCleo(ABC):
+class CommandCleo(ABC):  # pragma: no cover
     @property
     @abstractmethod
     def _io(self) -> IO:
