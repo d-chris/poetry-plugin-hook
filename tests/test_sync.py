@@ -4,6 +4,8 @@ from unittest.mock import MagicMock
 import pytest
 from cleo.io.buffered_io import BufferedIO
 
+from . import load_mocks
+
 
 @pytest.fixture
 def mock_sync_io(mocker):
@@ -45,5 +47,17 @@ def test_exit_invalid(poetry):
     assert process.returncode == 1
 
 
-def test_sync_mocked(poetry, mock_sync_io):
-    pass
+@pytest.mark.parametrize(
+    "mock",
+    load_mocks("sync"),
+    ids=lambda m: " ".join(m["args"]),
+)
+def test_sync_mocked(poetry, mock_sync_io, mock):
+    mock_sync_io(
+        "\n".join(mock["stdout"]),
+        "\n".join(mock["stderr"]),
+    )
+
+    process = poetry(*mock["args"])
+
+    assert process.returncode == mock["returncode"]

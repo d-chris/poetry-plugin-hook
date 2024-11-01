@@ -1,42 +1,15 @@
-import subprocess
-
 import pytest
-from cleo.io.buffered_io import BufferedOutput
-from cleo.io.inputs.argv_input import ArgvInput
-from poetry.console.application import Application
 
 import poetry_plugin_hook
+
+from . import application
 
 
 @pytest.fixture(scope="session")
 def poetry():
     """Run Poetry with the given arguments."""
 
-    def wrapped(*args: str) -> subprocess.CompletedProcess:
-
-        args = [__file__] + list(args)
-
-        input = ArgvInput(args)
-        stdout = BufferedOutput()
-        stderr = BufferedOutput()
-
-        try:
-            result = Application().run(
-                input=input,
-                output=stdout,
-                error_output=stderr,
-            )
-        except SystemExit as e:
-            result = e.code
-
-        return subprocess.CompletedProcess(
-            args=args,
-            returncode=result,
-            stdout=stdout.fetch(),
-            stderr=stderr.fetch(),
-        )
-
-    return wrapped
+    return application
 
 
 @pytest.fixture(scope="module")
