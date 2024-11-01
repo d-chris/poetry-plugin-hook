@@ -1,18 +1,64 @@
+[build-system]
+build-backend = "poetry.core.masonry.api"
+requires = [ "poetry-core" ]
+
 [tool.poetry]
-name = "poetry-plugin-latest"
+name = "poetry-plugin-hook"
 version = "0.0.0"
-description = "poetry plugin to register new command to check if all dependencies are up-to-date"
-authors = ["Christoph Dörrer <d-chris@web.de>"]
+description = "poetry plugin to register wrapped commands to use as pre-commit-hooks"
+authors = [ "Christoph Dörrer <d-chris@web.de>" ]
+license = "MIT"
 readme = "README.md"
+classifiers = [
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: Software Development :: Build Tools",
+  "Topic :: Software Development :: Libraries :: Python Modules",
+]
+keywords = [ "poetry", "pre-commit", "plugin", "hook" ]
+
+[tool.poetry.urls]
+repository = "https://github.com/d-chris/poetry-plugin-hook"
 
 [tool.poetry.dependencies]
 python = "^3.9"
-poetry = ">=1.8.0,<3.0.0"
-poetry-core = ">=1.7.0,<3.0.0"
+poetry = "^1.7.0"
+cleo = "^2.1.0"
+
+[tool.poetry.group.test.dependencies]
+pytest = "^8.3.3"
+pytest-cov = "^6.0.0"
+pytest-randomly = "^3.16.0"
+pytest-mock = "^3.14.0"
+
+[tool.poetry.group.docs.dependencies]
+pdoc = "^15.0.0"
+pathlibutil = "^0.3.3"
+
+[tool.poetry.group.dev.dependencies]
+tox = "^4.23.2"
 
 [tool.poetry.plugins."poetry.application.plugin"]
-latest = "poetry_plugin_latest.latest:LatestPlugin"
+hook = "poetry_plugin_hook:HookPlugin"
 
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+[tool.isort]
+profile = "black"
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+testpaths = "tests"
+addopts = [
+  "--color=yes",
+  "-s",
+  "--cov=poetry_plugin_hook",
+  "--cov-report=term-missing:skip-covered",
+  "--cov-report=xml",
+]
+
+[tool.coverage.run]
+omit = [ "*/tests/*" ]

@@ -1,0 +1,15 @@
+- id: poetry-hook-latest
+  name: poetry-hook-latest
+  description: Check if all top-level dependencies are up-to-date.
+  entry: poetry hook latest
+  language: python
+  pass_filenames: false
+  always_run: true
+  stages: [pre-push]
+- id: poetry-hook-sync
+  name: poetry-hook-sync
+  description: Synchronize the environment with the locked packages and the specified groups.
+  entry: poetry hook sync
+  language: python
+  pass_filenames: false
+  files: ^(.*/)?(poetry\.lock|pyproject\.toml)$
