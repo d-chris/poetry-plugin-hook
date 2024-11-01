@@ -12,7 +12,7 @@ class SyncCommand(InstallCommand):
     description = (
         "Synchronize the environment with the locked packages and the specified groups."
     )
-    help = ""
+    help = "poetry hook sync [options]"
 
     _true_options = ["sync"]
     _del_options = ["no-dev", "remove-untracked", "compile"]
@@ -28,6 +28,12 @@ class SyncCommand(InstallCommand):
     )
 
     def configure(self) -> None:
+        """
+        Modifiy all options from `poetry install --sync` to fit the `poetry hook sync`
+        command.
+
+        The `--exit` option is added to specify the return value of the command.
+        """
 
         self.options = [
             option(
@@ -47,6 +53,13 @@ class SyncCommand(InstallCommand):
         super().configure()
 
     def handle(self) -> int:
+        """
+        Executes `poetry install --sync` to synchronize the environment with the locked
+        packages and the specified groups.
+
+        Returns:
+            int: Non-zero exit code specified by the `--exit` option.
+        """
 
         # check if the exit option is valid
         exit = self.io.input.option("exit")
@@ -68,7 +81,7 @@ class SyncCommand(InstallCommand):
 
         match = self._operations.search(strip_ansi(stdout))
 
-        # retrive the exit code
+        # retrieve the exit code
         try:
             result = int(match.group(exit))
         except AttributeError:

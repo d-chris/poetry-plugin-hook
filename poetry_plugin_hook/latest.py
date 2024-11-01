@@ -8,7 +8,7 @@ from poetry_plugin_hook.redirect import buffered_io, strip_ansi
 class LatestCommand(ShowCommand):
     name = "hook latest"
     description = "Check if all top-level dependencies are up-to-date."
-    help = ""
+    help = "poetry hook latest [options]"
 
     _dependencies = re.compile(
         r"^(?P<package>.*?)\s+"
@@ -23,10 +23,8 @@ class LatestCommand(ShowCommand):
 
     def configure(self) -> None:
         """
-        Modifiy all options from `poetry show` to fit the `poetry latest` command.
-
-        Returns:
-            None
+        Modifiy all options from `poetry show -o -T` to fit the `poetry hook latest`
+        command.
         """
 
         self.options = [
@@ -41,8 +39,6 @@ class LatestCommand(ShowCommand):
     def handle(self) -> int:
         """
         Executes `poetry show -o -T` to check for outdated dependencies.
-
-        Catches stdout to check for dependencies and returns non-zero.
 
         Returns:
             int: Non-zero if there are outdated dependencies, zero otherwise.

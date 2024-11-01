@@ -40,6 +40,9 @@ pytest-mock = "^3.14.0"
 pdoc = "^15.0.0"
 pathlibutil = "^0.3.3"
 
+[tool.poetry.group.dev.dependencies]
+tox = "^4.23.2"
+
 [tool.poetry.plugins."poetry.application.plugin"]
 hook = "poetry_plugin_hook:HookPlugin"
 
