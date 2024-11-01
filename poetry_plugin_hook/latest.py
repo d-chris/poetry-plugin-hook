@@ -11,10 +11,10 @@ class LatestCommand(ShowCommand):
     help = ""
 
     _dependencies = re.compile(
-        r"^(?P<package>\w\S+)\s+"
-        r"(?P<current>\d\S+)\s+"
-        r"(?P<latest>\d\S+)\s+"
-        r"(?P<description>\w.*?)$",
+        r"^(?P<package>.*?)\s+"
+        r"(?P<current>\d\.\d\.\d\S*)\s+"
+        r"(?P<latest>\d\.\d\.\d\S*)\s+"
+        r"(?P<description>.*?)$",
         re.MULTILINE,
     )
 

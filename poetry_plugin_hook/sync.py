@@ -75,18 +75,16 @@ class SyncCommand(InstallCommand):
             self.line("No dependencies to syncronize.", style="info")
             return 0
         except IndexError:
-            pass
+            result = 0
+
+            for code in self._exit_codes:
+                try:
+                    result += int(match.group(code))
+                except IndexError:
+                    pass
 
         if stdout.strip() or stderr.strip():
             self.line(stdout)
             self.line_error(stderr)
-
-        result = 0
-
-        for code in self._exit_codes:
-            try:
-                result += int(match.group(code))
-            except IndexError:
-                pass
 
         return result

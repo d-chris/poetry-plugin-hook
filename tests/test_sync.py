@@ -9,11 +9,16 @@ from cleo.io.buffered_io import BufferedIO
 def mock_sync_io(mocker):
     """Mock latest fixture"""
 
-    def wrapped(output: str):
+    def wrapped(
+        stdout: str = "",
+        stderr: str = "",
+        **kwargs,
+    ):
         """Mock the InstallCommand class from poetry."""
 
         mock_io = MagicMock(spec=BufferedIO)
-        mock_io.fetch_output.return_value = output
+        mock_io.fetch_output.return_value = stdout
+        mock_io.fetch_error.return_value = stderr
 
         mock_context = MagicMock(return_value=mock_io)
         mock_context.__enter__.return_value = mock_io
