@@ -56,3 +56,6 @@ addopts = [
   "--cov-report=term-missing:skip-covered",
   "--cov-report=xml",
 ]
+
+[tool.coverage.run]
+omit = [ "*/tests/*" ]

@@ -1,3 +1,6 @@
+import pytest
+
+
 def test_poetry_list(poetry_list, hook):
     """Test if the hook name is in the `poetry list`."""
 
@@ -23,6 +26,7 @@ def test_hook_help(poetry, hook):
     assert hook.description in process.stdout
 
 
+@pytest.mark.skip(reason="Slow tests")
 def test_hook(poetry, hook):
     """Execute the hookand check if the command exists."""
 

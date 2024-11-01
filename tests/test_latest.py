@@ -35,7 +35,7 @@ def mock_latest_io(mocker):
 @pytest.mark.parametrize(
     "mock",
     load_mocks("latest"),
-    ids=lambda m: " ".join(m["args"]),
+    ids=lambda m: f'{" ".join(m["args"])}-{m["stdout"][0][:24]}',
 )
 def test_latest_mocked(poetry, mock_latest_io, mock):
     mock_latest_io(

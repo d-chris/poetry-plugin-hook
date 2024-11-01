@@ -1,7 +1,7 @@
 - id: poetry-hook-latest
   name: poetry-hook-latest
   description: Check if all top-level dependencies are up-to-date.
-  entry: poetry hook sync
+  entry: poetry hook latest
   language: python
   pass_filenames: false
   always_run: true

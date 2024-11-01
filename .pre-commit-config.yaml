@@ -7,6 +7,10 @@ repos:
       - id: trailing-whitespace
       - id: check-toml
       - id: check-json
+  - repo: https://github.com/rhysd/actionlint
+    rev: v1.7.3
+    hooks:
+      - id: actionlint
   - repo: https://github.com/tox-dev/pyproject-fmt
     rev: v2.5.0
     hooks:

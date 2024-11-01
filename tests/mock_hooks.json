@@ -309,11 +309,62 @@
     {
         "args": [
             "hook",
+            "sync"
+        ],
+        "returncode": 0,
+        "stdout": [
+            "Installing dependencies from lock file",
+            "",
+            "No dependencies to install or update",
+            "",
+            "Installing the current project: poetry-plugin-hook (0.0.0)",
+            "",
+            ""
+        ],
+        "stderr": [
+            "",
+            ""
+        ]
+    },
+    {
+        "args": [
+            "hook",
             "latest"
         ],
         "returncode": 1,
         "stdout": [
             "pre-commit (!) 4.0.0 4.0.1 A framework for managing and maintaining multi-la...",
+            "",
+            ""
+        ],
+        "stderr": [
+            "",
+            ""
+        ]
+    },
+    {
+        "args": [
+            "hook",
+            "latest"
+        ],
+        "returncode": 1,
+        "stdout": [
+            "pre-commit 4.0.0 4.0.1 A framework for managing and maintaining multi-la...",
+            "",
+            ""
+        ],
+        "stderr": [
+            "",
+            ""
+        ]
+    },
+    {
+        "args": [
+            "hook",
+            "latest"
+        ],
+        "returncode": 0,
+        "stdout": [
             "",
             ""
         ],
