@@ -55,18 +55,21 @@ class LatestCommand(ShowCommand):
         # redirect output to check for outdated dependencies
         with buffered_io(self) as io:
             super().handle()
-            text = io.fetch_output()
+            stdout = io.fetch_output()
+            stderr = io.fetch_error()
+
+        if stdout.strip() or stderr.strip():
+            self.line(stdout)
+            self.line_error(stderr)
 
         # count outdated dependencies
         outdated = len(
             self._dependencies.findall(
-                strip_ansi(text),
+                strip_ansi(stdout),
             )
         )
 
         if outdated == 0:
-            self.line("All top-level dependencies are up-to-date.")
-        else:
-            self.line(text)
+            self.line("All top-level dependencies are up-to-date.", style="info")
 
         return outdated

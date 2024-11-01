@@ -1,6 +1,3 @@
-import re
-
-
 def test_poetry_list(poetry_list, hook):
     """Test if the hook name is in the `poetry list`."""
 
@@ -34,10 +31,4 @@ def test_hook(poetry, hook):
         "--no-ansi",
     )
 
-    assert (
-        re.search(
-            r"The command \"(?P<cmd>.*?)\" does not exist\.",
-            process.stdout,
-        )
-        is None
-    )
+    assert process.stderr.strip() == ""

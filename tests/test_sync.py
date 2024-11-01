@@ -33,7 +33,7 @@ def test_exit_invalid(poetry):
         "hook",
         "sync",
         "--exit",
-        "fubar",
+        "unknown",
     )
 
     assert re.search(r"Invalid option: exit='(?P<exit>.*?)'", process.stderr)

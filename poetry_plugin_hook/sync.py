@@ -1,6 +1,6 @@
 import re
 
-from cleo.exceptions import CleoError
+from cleo.exceptions import CleoLogicError
 from cleo.helpers import option
 from poetry.console.commands.install import InstallCommand
 
@@ -23,7 +23,7 @@ class SyncCommand(InstallCommand):
         r"(?P<installs>\d+)\D+"
         r"(?P<updates>\d+)\D+"
         r"(?P<removals>\d+)\D+"
-        r"(?P<skipped>\d+)\D+$",
+        r"(?:(?P<skipped>\d+)\D+)?$",
         re.MULTILINE,
     )
 
@@ -51,7 +51,7 @@ class SyncCommand(InstallCommand):
         # check if the exit option is valid
         exit = self.io.input.option("exit")
         if exit not in self._exit_codes:
-            raise CleoError(f"Invalid option: {exit=}")
+            raise CleoLogicError(f"Invalid option: {exit=}")
 
         # force options to `poetry install --sync`
         for opt in self._true_options:
@@ -64,33 +64,29 @@ class SyncCommand(InstallCommand):
         ) as io:
             super().handle()
             stdout = io.fetch_output()
+            stderr = io.fetch_error()
 
-        # parse the output for matching lines and take the last one
-        try:
-            match: re.Match = list(
-                self._operations.finditer(
-                    strip_ansi(stdout),
-                )
-            )[-1]
-        except IndexError:
-            self.line("No dependencies to install or update.")
-            return 0
+        match = self._operations.search(strip_ansi(stdout))
 
         # retrive the exit code
         try:
             result = int(match.group(exit))
+        except AttributeError:
+            self.line("No dependencies to syncronize.", style="info")
+            return 0
         except IndexError:
-            result = 0
+            pass
 
-            for code in self._exit_codes:
-                try:
-                    result += int(match.group(code))
-                except IndexError:
-                    pass
-
-        if result == 0:
-            self.line(match.group(0))
-        else:
+        if stdout.strip() or stderr.strip():
             self.line(stdout)
+            self.line_error(stderr)
+
+        result = 0
+
+        for code in self._exit_codes:
+            try:
+                result += int(match.group(code))
+            except IndexError:
+                pass
 
         return result
