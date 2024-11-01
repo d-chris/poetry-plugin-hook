@@ -1,0 +1,1 @@
+[{"message": ["Error parsing type annotation list[VirtualEnv] for poetry.utils.env.EnvManager.list: 'function' object is not subscriptable"], "category": "UserWarning", "filename": "/home/runner/.cache/pypoetry/virtualenvs/poetry-plugin-hook-UVjOct8i-py3.13/lib/python3.13/site-packages/pdoc/doc_types.py", "lineno": 123}]
