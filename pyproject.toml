@@ -10,13 +10,15 @@ authors = [ "Christoph Dörrer <d-chris@web.de>" ]
 license = "MIT"
 readme = "README.md"
 classifiers = [
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
   "Programming Language :: Python :: 3.9",
   "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.12",
   "Programming Language :: Python :: 3.13",
-  "License :: OSI Approved :: MIT License",
-  "Operating System :: OS Independent",
+  "Topic :: Software Development :: Build Tools",
+  "Topic :: Software Development :: Libraries :: Python Modules",
 ]
 keywords = [ "poetry", "pre-commit", "plugin", "hook" ]
 
@@ -32,6 +34,7 @@ cleo = "^2.1.0"
 pytest = "^8.3.3"
 pytest-cov = "^6.0.0"
 pytest-randomly = "^3.16.0"
+pytest-mock = "^3.14.0"
 
 [tool.poetry.group.docs.dependencies]
 pdoc = "^15.0.0"

@@ -2,7 +2,7 @@ import re
 
 from poetry.console.commands.show import ShowCommand
 
-from .redirect import buffered_io, strip_ansi
+from poetry_plugin_hook.redirect import buffered_io, strip_ansi
 
 
 class LatestCommand(ShowCommand):

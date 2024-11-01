@@ -1,43 +1,43 @@
-import subprocess
+import re
 
 
 def test_poetry_list(poetry_list, hook):
+    """Test if the hook name is in the `poetry list`."""
 
     assert hook.name in poetry_list
 
 
 def test_poetry_help(poetry_list, hook):
+    """Test if the hook description is in the `poetry list`."""
 
     assert hook.description in poetry_list
 
 
-def test_hook_help(hook):
+def test_hook_help(poetry, hook):
+    """Test if the hook help is working."""
 
-    process = subprocess.run(
-        [
-            "poetry",
-            hook.name,
-            "--no-ansi",
-            "--help",
-        ],
-        capture_output=True,
-        encoding="utf-8",
+    process = poetry(
+        hook.name,
+        "--no-ansi",
+        "--help",
     )
 
     assert process.returncode == 0
     assert hook.description in process.stdout
 
 
-def test_hook(hook):
+def test_hook(poetry, hook):
+    """Execute the hookand check if the command exists."""
 
-    process = subprocess.run(
-        [
-            "poetry",
-            hook.name,
-            "--no-ansi",
-        ],
-        capture_output=True,
-        encoding="utf-8",
+    process = poetry(
+        hook.name,
+        "--no-ansi",
     )
 
-    assert process.stdout != ""
+    assert (
+        re.search(
+            r"The command \"(?P<cmd>.*?)\" does not exist\.",
+            process.stdout,
+        )
+        is None
+    )

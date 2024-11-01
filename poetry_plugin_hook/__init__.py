@@ -4,8 +4,8 @@
 
 from poetry.plugins.application_plugin import ApplicationPlugin
 
-from .latest import LatestCommand
-from .sync import SyncCommand
+from poetry_plugin_hook.latest import LatestCommand
+from poetry_plugin_hook.sync import SyncCommand
 
 
 class HookPlugin(ApplicationPlugin):
