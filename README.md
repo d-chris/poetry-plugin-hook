@@ -52,6 +52,39 @@ No dependencies to install or update.
 exit-code: 0
 ```
 
+## pre-commit-config
+
+Add the following to your `.pre-commit-config.yaml` file.
+
+```yaml
+repos:
+  - repo: https://github.com/d-chris/poetry-plugin-hook
+    rev: v1.1.0
+    hooks:
+        - id: poetry-hook-latest
+        - id: poetry-hook-sync
+```
+
+## pre-commit-hooks
+
+```yaml
+- id: poetry-hook-latest
+  name: poetry-hook-latest
+  description: Check if all top-level dependencies are up-to-date.
+  entry: poetry hook latest
+  language: system
+  pass_filenames: false
+  always_run: true
+  stages: [pre-push]
+- id: poetry-hook-sync
+  name: poetry-hook-sync
+  description: Synchronize the environment with the locked packages and the specified groups.
+  entry: poetry hook sync
+  language: system
+  pass_filenames: false
+  files: ^(.*/)?(poetry\.lock|pyproject\.toml)$
+```
+
 ## Dependencies
 
 [![PyPI - cleo](https://img.shields.io/pypi/v/cleo?logo=pypi&logoColor=white&label=cleo)](https://pypi.org/project/cleo/)
