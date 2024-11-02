@@ -16,7 +16,7 @@
 
 ## install
 
-```shell
+```cmd
 $ pip install poetry-plugin-hook
 ```
 
@@ -24,7 +24,7 @@ or with `poetry`
 
 > Especially on [Windows](https://python-poetry.org/docs/cli/#self), self commands that update or remove packages may be problematic.
 
-```shell
+```cmd
 $ poetry self add poetry-plugin-hook
 ```
 
@@ -34,7 +34,7 @@ Wrapper for `poetry show -o -T` command.
 
 Exit code represents the number of outdated packages.
 
-```shell
+```cmd
 {{ "poetry hook latest --help" | shell }}
 ```
 
@@ -44,7 +44,7 @@ Wrapper for `poetry install --sync` command.
 
 With `--exit` option, the command returns the corresponding value as exit code. With it's default `--exit=any` the sum of *installs*, *updates* and *removals* is returned.
 
-```shell
+```cmd
 {{ "poetry hook sync --help" | shell }}
 ```
 
@@ -58,6 +58,7 @@ repos:
     rev: v1.1.0
     hooks:
         - id: poetry-hook-latest
+          args: ["--only=main"]
         - id: poetry-hook-sync
           args: [ "--dry-run" ]
 ```
@@ -65,20 +66,20 @@ repos:
 ### usage
 
 1. Make sure pre-commit is installed, see [official documentation](https://pre-commit.com/#installation).
-  ```shell
+  ```cmd
   $ pre-commit --version
 
     pre-commit 3.7.1
   ```
 2. `cd` into your project and register hooks and install them. this may take a while.
-  ```shell
+  ```cmd
   $ pre-commit install --install-hooks -t pre-commit -t pre-push
 
     pre-commit installed at .git\hooks\pre-commit
     pre-commit installed at .git\hooks\pre-push
   ```
 3. Test the pre-push hook.
-  ```shell
+  ```cmd
   $ pre-commit run poetry-hook-latest --all-files --hook-stage pre-push
 
     poetry-hook-latest.......................................................Failed
@@ -88,7 +89,7 @@ repos:
     pytest-cov 5.0.0 6.0.0 Pytest plugin for measuring coverage.
   ```
 4. Test the pre-commit hooks.
-  ```shell
+  ```cmd
   $ pre-commit run poetry-hook-sync --all-files
 
     poetry-hook-sync.........................................................Failed
