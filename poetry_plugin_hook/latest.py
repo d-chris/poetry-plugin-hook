@@ -10,10 +10,20 @@ class LatestCommand(ShowCommand):
     description = "Check if all top-level dependencies are up-to-date."
     help = "poetry hook latest [options]"
 
+    _version = (
+        r"([1-9][0-9]*!)?"
+        r"(0|[1-9][0-9]*)"
+        r"(\.(0|[1-9][0-9]*))*"
+        r"((a|b|rc)(0|[1-9][0-9]*))?"
+        r"(\.post(0|[1-9][0-9]*))?"
+        r"(\.dev(0|[1-9][0-9]*))?"
+    )
+    """PEP 440 version regex."""
+
     _dependencies = re.compile(
         r"^(?P<package>.*?)\s+"
-        r"(?P<current>\d\.\d\.\d\S*)\s+"
-        r"(?P<latest>\d\.\d\.\d\S*)\s+"
+        rf"(?P<current>{_version})\s+"
+        rf"(?P<latest>{_version})\s+"
         r"(?P<description>.*?)$",
         re.MULTILINE,
     )
