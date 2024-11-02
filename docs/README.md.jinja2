@@ -12,7 +12,7 @@
 
 ---
 
-`poetry` plugin to register wrapped commands to use as `pre-commit-hooks`. all hook commands return zero on success and non-zero on failure.
+[`poetry`](https://python-poetry.org/) plugin to register wrapped commands to use as [`pre-commit-hooks`](https://pre-commit.com/). all hook commands return zero on success and non-zero on failure.
 
 ## install
 
@@ -22,7 +22,7 @@ $ pip install poetry-plugin-hook
 
 or with `poetry`
 
-> Especially on [Windows](https://python-poetry.org/docs/cli/#self-add), self commands that update or remove packages may be problematic.
+> Especially on [Windows](https://python-poetry.org/docs/cli/#self), self commands that update or remove packages may be problematic.
 
 ```shell
 $ poetry self add poetry-plugin-hook
@@ -59,7 +59,50 @@ repos:
     hooks:
         - id: poetry-hook-latest
         - id: poetry-hook-sync
+          args: [ "--dry-run" ]
 ```
+
+### usage
+
+1. Make sure pre-commit is installed, see [official documentation](https://pre-commit.com/#installation).
+  ```shell
+  $ pre-commit --version
+
+    pre-commit 3.7.1
+  ```
+2. `cd` into your project and register hooks and install them. this may take a while.
+  ```shell
+  $ pre-commit install --install-hooks -t pre-commit -t pre-push
+
+    pre-commit installed at .git\hooks\pre-commit
+    pre-commit installed at .git\hooks\pre-push
+  ```
+3. Test the pre-push hook.
+  ```shell
+  $ pre-commit run poetry-hook-latest --all-files --hook-stage pre-push
+
+    poetry-hook-latest.......................................................Failed
+    - hook id: poetry-hook-latest
+    - exit code: 1
+
+    pytest-cov 5.0.0 6.0.0 Pytest plugin for measuring coverage.
+  ```
+4. Test the pre-commit hooks.
+  ```shell
+  $ pre-commit run poetry-hook-sync --all-files
+
+    poetry-hook-sync.........................................................Failed
+    - hook id: poetry-hook-sync
+    - exit code: 1
+
+    Installing dependencies from lock file
+
+    Package operations: 0 installs, 1 update, 0 removals
+
+      - Downgrading pytest-cov (6.0.0 -> 5.0.0)
+
+    Installing the current project: poetry-plugin-hook (0.0.0)
+  ```
 
 ## pre-commit-hooks
 
