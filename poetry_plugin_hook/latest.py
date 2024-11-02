@@ -58,6 +58,11 @@ class LatestCommand(ShowCommand):
         for option in self._true_options:
             self.io.input.set_option(option, True)
 
+        # check for certain package if specified
+        package = self.io.input.argument("package")
+        if package:
+            self.io.input.set_argument("package", None)
+
         # redirect output to check for outdated dependencies
         with buffered_io(self) as io:
             super().handle()
@@ -68,14 +73,25 @@ class LatestCommand(ShowCommand):
             self.line(stdout)
             self.line_error(stderr)
 
-        # count outdated dependencies
-        outdated = len(
-            self._dependencies.findall(
-                strip_ansi(stdout),
-            )
-        )
+        out = strip_ansi(stdout)
+
+        if package is not None:
+            return self._handle_package(package, out)
+
+        return self._handle_outdated(out)
+
+    def _handle_outdated(self, stdout: str) -> int:
+        outdated = len(self._dependencies.findall(stdout))
 
         if outdated == 0:
             self.line("All top-level dependencies are up-to-date.", style="info")
 
         return outdated
+
+    def _handle_package(self, package: str, stdout: str) -> int:
+        for match in self._dependencies.finditer(stdout):
+            if match.group("package") == package:
+                return 1
+
+        self.line(f"Top-level {package=} is up-to-date.", style="info")
+        return 0

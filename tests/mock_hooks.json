@@ -388,5 +388,39 @@
             "",
             ""
         ]
+    },
+    {
+        "args": [
+            "hook",
+            "latest",
+            "py7zr"
+        ],
+        "returncode": 1,
+        "stdout": [
+            "py7zr      0.20.8   0.22.0    Pure python 7-zip library",
+            "pytest-cov 4.1.0    6.0.0     Pytest plugin for measuring coverage.",
+            ""
+        ],
+        "stderr": [
+            "",
+            ""
+        ]
+    },
+    {
+        "args": [
+            "hook",
+            "latest",
+            "fubar"
+        ],
+        "returncode": 0,
+        "stdout": [
+            "py7zr      0.20.8   0.22.0    Pure python 7-zip library",
+            "pytest-cov 4.1.0    6.0.0     Pytest plugin for measuring coverage.",
+            ""
+        ],
+        "stderr": [
+            "",
+            ""
+        ]
     }
 ]
