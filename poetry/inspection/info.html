@@ -195,7 +195,7 @@
                             <div id="PackageInfoError.__init__" class="classattr">
                                 <div class="attr function">
             
-        <span class="name">PackageInfoError</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">path</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span>, </span><span class="param"><span class="o">*</span><span class="n">reasons</span><span class="p">:</span> <span class="ne">BaseException</span> <span class="o">|</span> <span class="nb">str</span></span>)</span>
+        <span class="name">PackageInfoError</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">path</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>, </span><span class="param"><span class="o">*</span><span class="n">reasons</span><span class="p">:</span> <span class="ne">BaseException</span> <span class="o">|</span> <span class="nb">str</span></span>)</span>
 
         
     </div>
@@ -372,7 +372,7 @@
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">to_package</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="bp">self</span>,</span><span class="param">	<span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">extras</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">root_dir</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="../core/packages/package.html#Package">poetry.core.packages.package.Package</a></span>:</span></span>
+        <span class="name">to_package</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="bp">self</span>,</span><span class="param">	<span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">extras</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">root_dir</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="../core/packages/package.html#Package">poetry.core.packages.package.Package</a></span>:</span></span>
 
         
     </div>
@@ -399,7 +399,7 @@ dependency strings will be parsed relative to this directory.</li>
                     <div class="decorator decorator-staticmethod">@staticmethod</div>
 
         <span class="def">def</span>
-        <span class="name">has_setup_files</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">path</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span></span><span class="return-annotation">) -> <span class="nb">bool</span>:</span></span>
+        <span class="name">has_setup_files</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">path</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span></span><span class="return-annotation">) -> <span class="nb">bool</span>:</span></span>
 
         
     </div>
@@ -413,7 +413,7 @@ dependency strings will be parsed relative to this directory.</li>
                     <div class="decorator decorator-classmethod">@classmethod</div>
 
         <span class="def">def</span>
-        <span class="name">from_setup_files</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">cls</span>, </span><span class="param"><span class="n">path</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span></span><span class="return-annotation">) -> <span class="n"><a href="#PackageInfo">PackageInfo</a></span>:</span></span>
+        <span class="name">from_setup_files</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">cls</span>, </span><span class="param"><span class="n">path</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span></span><span class="return-annotation">) -> <span class="n"><a href="#PackageInfo">PackageInfo</a></span>:</span></span>
 
         
     </div>
@@ -460,7 +460,7 @@ as a fallback.</p>
                     <div class="decorator decorator-classmethod">@classmethod</div>
 
         <span class="def">def</span>
-        <span class="name">from_metadata_directory</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="bp">cls</span>,</span><span class="param">	<span class="n">path</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span></span><span class="return-annotation">) -> <span class="n"><a href="#PackageInfo">PackageInfo</a></span> <span class="o">|</span> <span class="kc">None</span>:</span></span>
+        <span class="name">from_metadata_directory</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">cls</span>, </span><span class="param"><span class="n">path</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span></span><span class="return-annotation">) -> <span class="n"><a href="#PackageInfo">PackageInfo</a></span> <span class="o">|</span> <span class="kc">None</span>:</span></span>
 
         
     </div>
@@ -504,7 +504,7 @@ as a fallback.</p>
                     <div class="decorator decorator-classmethod">@classmethod</div>
 
         <span class="def">def</span>
-        <span class="name">from_directory</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="bp">cls</span>,</span><span class="param">	<span class="n">path</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span>,</span><span class="param">	<span class="n">disable_build</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#PackageInfo">PackageInfo</a></span>:</span></span>
+        <span class="name">from_directory</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="bp">cls</span>,</span><span class="param">	<span class="n">path</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>,</span><span class="param">	<span class="n">disable_build</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n"><a href="#PackageInfo">PackageInfo</a></span>:</span></span>
 
         
     </div>
@@ -531,7 +531,7 @@ build is attempted in order to gather metadata.</li>
                     <div class="decorator decorator-classmethod">@classmethod</div>
 
         <span class="def">def</span>
-        <span class="name">from_sdist</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">cls</span>, </span><span class="param"><span class="n">path</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span></span><span class="return-annotation">) -> <span class="n"><a href="#PackageInfo">PackageInfo</a></span>:</span></span>
+        <span class="name">from_sdist</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">cls</span>, </span><span class="param"><span class="n">path</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span></span><span class="return-annotation">) -> <span class="n"><a href="#PackageInfo">PackageInfo</a></span>:</span></span>
 
         
     </div>
@@ -553,7 +553,7 @@ build is attempted in order to gather metadata.</li>
                     <div class="decorator decorator-classmethod">@classmethod</div>
 
         <span class="def">def</span>
-        <span class="name">from_wheel</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">cls</span>, </span><span class="param"><span class="n">path</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span></span><span class="return-annotation">) -> <span class="n"><a href="#PackageInfo">PackageInfo</a></span>:</span></span>
+        <span class="name">from_wheel</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">cls</span>, </span><span class="param"><span class="n">path</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span></span><span class="return-annotation">) -> <span class="n"><a href="#PackageInfo">PackageInfo</a></span>:</span></span>
 
         
     </div>
@@ -575,7 +575,7 @@ build is attempted in order to gather metadata.</li>
                     <div class="decorator decorator-classmethod">@classmethod</div>
 
         <span class="def">def</span>
-        <span class="name">from_bdist</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">cls</span>, </span><span class="param"><span class="n">path</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span></span><span class="return-annotation">) -> <span class="n"><a href="#PackageInfo">PackageInfo</a></span>:</span></span>
+        <span class="name">from_bdist</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">cls</span>, </span><span class="param"><span class="n">path</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span></span><span class="return-annotation">) -> <span class="n"><a href="#PackageInfo">PackageInfo</a></span>:</span></span>
 
         
     </div>
@@ -597,7 +597,7 @@ build is attempted in order to gather metadata.</li>
                     <div class="decorator decorator-classmethod">@classmethod</div>
 
         <span class="def">def</span>
-        <span class="name">from_path</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">cls</span>, </span><span class="param"><span class="n">path</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span></span><span class="return-annotation">) -> <span class="n"><a href="#PackageInfo">PackageInfo</a></span>:</span></span>
+        <span class="name">from_path</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">cls</span>, </span><span class="param"><span class="n">path</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span></span><span class="return-annotation">) -> <span class="n"><a href="#PackageInfo">PackageInfo</a></span>:</span></span>
 
         
     </div>
@@ -620,7 +620,7 @@ build is attempted in order to gather metadata.</li>
                     <div class="decorator decorator-functools.lru_cache">@functools.lru_cache(maxsize=None)</div>
 
         <span class="def">def</span>
-        <span class="name">get_pep517_metadata</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">path</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">Path</span></span><span class="return-annotation">) -> <span class="n"><a href="#PackageInfo">PackageInfo</a></span>:</span></span>
+        <span class="name">get_pep517_metadata</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">path</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span></span><span class="return-annotation">) -> <span class="n"><a href="#PackageInfo">PackageInfo</a></span>:</span></span>
 
         
     </div>
