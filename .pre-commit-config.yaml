@@ -45,10 +45,12 @@ repos:
     rev: v1.1.0
     hooks:
       - id: poetry-hook-latest
+        args: ["--only=main"]
   - repo: local
     hooks:
       - id: readme
         name: rendering readme
         entry: poetry run python docs/readme.py
+        stages: [pre-commit]
         language: system
         files: docs/README\.md\.jinja2$
