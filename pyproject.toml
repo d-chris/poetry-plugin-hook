@@ -24,6 +24,7 @@ keywords = [ "poetry", "pre-commit", "plugin", "hook" ]
 
 [tool.poetry.urls]
 repository = "https://github.com/d-chris/poetry-plugin-hook"
+documentation = "https://d-chris.github.io/poetry-plugin-hook"
 
 [tool.poetry.dependencies]
 python = "^3.9"
@@ -61,4 +62,7 @@ addopts = [
 ]
 
 [tool.coverage.run]
-omit = [ "*/tests/*" ]
+omit = [
+  "*/tests/*",
+  "*/docs/*",
+]
