@@ -53,14 +53,7 @@ With `--exit` option, the command returns the corresponding value as exit code. 
 Add the following to your `.pre-commit-config.yaml` file.
 
 ```yaml
-repos:
-  - repo: https://github.com/d-chris/poetry-plugin-hook
-    rev: v1.1.0
-    hooks:
-        - id: poetry-hook-latest
-          args: ["--only=main"]
-        - id: poetry-hook-sync
-          args: [ "--dry-run" ]
+{{ ".pre-commit-example.yaml" | include }}
 ```
 
 ### usage
@@ -73,7 +66,7 @@ repos:
   ```
 2. `cd` into your project and register hooks and install them. this may take a while.
   ```cmd
-  $ pre-commit install --install-hooks -t pre-commit -t pre-push
+  $ pre-commit install --install-hooks
 
     pre-commit installed at .git\hooks\pre-commit
     pre-commit installed at .git\hooks\pre-push

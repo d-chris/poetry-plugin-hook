@@ -8,7 +8,13 @@ from poetry_plugin_hook.redirect import buffered_io, strip_ansi
 class LatestCommand(ShowCommand):
     name = "hook latest"
     description = "Check if all top-level dependencies are up-to-date."
-    help = "poetry hook latest [options]"
+    help = """\
+To check if all top-level dependencies of your package are up-to-date
+    <info>poetry hook latest --only=main</>
+
+If a specific package is outdated
+    <info>poetry hook latest <package></>
+"""
 
     _version = (
         r"([1-9][0-9]*!)?"
@@ -58,6 +64,11 @@ class LatestCommand(ShowCommand):
         for option in self._true_options:
             self.io.input.set_option(option, True)
 
+        # check for certain package if specified
+        package = self.io.input.argument("package")
+        if package:
+            self.io.input.set_argument("package", None)
+
         # redirect output to check for outdated dependencies
         with buffered_io(self) as io:
             super().handle()
@@ -68,14 +79,55 @@ class LatestCommand(ShowCommand):
             self.line(stdout)
             self.line_error(stderr)
 
-        # count outdated dependencies
-        outdated = len(
-            self._dependencies.findall(
-                strip_ansi(stdout),
-            )
-        )
+        stdout = strip_ansi(stdout)
+
+        if package is not None:
+            return self._handle_package(package, stdout)
+
+        return self._handle_outdated(stdout)
+
+    def _handle_outdated(self, stdout: str) -> int:
+        """
+        Handles the output of the `poetry show -o -T` command to check for outdated
+        dependencies.
+
+        Prints a message if all top-level dependencies are up-to-date.
+
+        Args:
+            stdout (str): The standard output from the `poetry show -o -T` command.
+
+        Returns:
+            int: The number of outdated dependencies.
+        """
+        outdated = len(self._dependencies.findall(stdout))
 
         if outdated == 0:
             self.line("All top-level dependencies are up-to-date.", style="info")
 
         return outdated
+
+    def _handle_package(self, package: str, stdout: str) -> int:
+        """
+        Handles the output of the `poetry show -o -T` command to check for the given
+        package.
+
+        Prints a message if the top-level package is not found in the output.
+
+        Args:
+            package (str): The name of the package to check.
+            stdout (str): The standard output from the `poetry show -o -T` command.
+        Returns:
+            int: Returns 1 if the package is outdated otherwise returns 0.
+        """
+
+        _dependency = re.compile(
+            re.escape(package),
+        )
+
+        for match in self._dependencies.finditer(stdout):
+            _package = match.group("package").split()[0]
+            if _dependency.fullmatch(_package):
+                return 1
+
+        self.line(f"Top-level {package=} is up-to-date.", style="info")
+        return 0
