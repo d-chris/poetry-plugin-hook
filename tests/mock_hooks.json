@@ -345,6 +345,40 @@
     {
         "args": [
             "hook",
+            "latest",
+            "pre-commit"
+        ],
+        "returncode": 1,
+        "stdout": [
+            "pre-commit (!) 4.0.0 4.0.1 A framework for managing and maintaining multi-la...",
+            "",
+            ""
+        ],
+        "stderr": [
+            "",
+            ""
+        ]
+    },
+    {
+        "args": [
+            "hook",
+            "latest",
+            "pre"
+        ],
+        "returncode": 0,
+        "stdout": [
+            "pre-commit (!) 4.0.0 4.0.1 A framework for managing and maintaining multi-la...",
+            "",
+            ""
+        ],
+        "stderr": [
+            "",
+            ""
+        ]
+    },
+    {
+        "args": [
+            "hook",
             "latest"
         ],
         "returncode": 1,
