@@ -161,7 +161,11 @@ poetry_plugin_hook    </h1>
     -v|vv|vvv, --verbose       Increase the verbosity of messages: 1 for normal output, 2 for more verbose output and 3 for debug.
 
   Help:
-    poetry hook latest [options]
+    To check if all top-level dependencies of your package are up-to-date
+        poetry hook latest --only=main
+
+    If a specific package is outdated
+        poetry hook latest &lt;package&gt;
 </code></pre>
 
 <h2 id="hook-sync">hook sync</h2>
@@ -202,7 +206,8 @@ poetry_plugin_hook    </h1>
     -v|vv|vvv, --verbose       Increase the verbosity of messages: 1 for normal output, 2 for more verbose output and 3 for debug.
 
   Help:
-    poetry hook sync [options]
+    To check if your environment is synchronized without making any changes
+        poetry hook sync --dry-run
 </code></pre>
 
 <h2 id="pre-commit-config">pre-commit-config</h2>
@@ -210,14 +215,19 @@ poetry_plugin_hook    </h1>
 <p>Add the following to your <code>.pre-commit-config.yaml</code> file.</p>
 
 <div class="pdoc-code codehilite">
-<pre><span></span><code><span class="nt">repos</span><span class="p">:</span>
+<pre><span></span><code><span class="nt">default_install_hook_types</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pre-commit</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pre-push</span>
+<span class="nt">default_stages</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pre-commit</span>
+<span class="nt">repos</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">repo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/d-chris/poetry-plugin-hook</span>
-<span class="w">    </span><span class="nt">rev</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1.1.0</span>
+<span class="w">    </span><span class="nt">rev</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1.2.1</span>
 <span class="w">    </span><span class="nt">hooks</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">poetry-hook-latest</span>
-<span class="w">          </span><span class="nt">args</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;--only=main&quot;</span><span class="p p-Indicator">]</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">poetry-hook-sync</span>
-<span class="w">          </span><span class="nt">args</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="w"> </span><span class="s">&quot;--dry-run&quot;</span><span class="w"> </span><span class="p p-Indicator">]</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">poetry-hook-latest</span>
+<span class="w">        </span><span class="nt">args</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;--only=main&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">poetry-hook-sync</span>
+<span class="w">        </span><span class="nt">args</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;--dry-run&quot;</span><span class="p p-Indicator">]</span>
 </code></pre>
 </div>
 
@@ -232,7 +242,7 @@ poetry_plugin_hook    </h1>
 </code></pre></li>
 <li><p><code>cd</code> into your project and register hooks and install them. this may take a while.</p>
 
-<pre><code>$ pre-commit install --install-hooks -t pre-commit -t pre-push
+<pre><code>$ pre-commit install --install-hooks
 
   pre-commit installed at .git\hooks\pre-commit
   pre-commit installed at .git\hooks\pre-push
@@ -337,7 +347,8 @@ poetry_plugin_hook    </h1>
                             <div id="LatestCommand.help" class="classattr">
                                 <div class="attr variable">
             <span class="name">help</span>        =
-<span class="default_value">&#39;poetry hook latest [options]&#39;</span>
+<input id="LatestCommand.help-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+            <label class="view-value-button pdoc-button" for="LatestCommand.help-view-value"></label><span class="default_value">&#39;To check if all top-level dependencies of your package are up-to-date\n    &lt;info&gt;poetry hook latest --only=main&lt;/&gt;\n\nIf a specific package is outdated\n    &lt;info&gt;poetry hook latest &lt;package&gt;&lt;/&gt;\n&#39;</span>
 
         
     </div>
@@ -506,7 +517,8 @@ command.</p>
                             <div id="SyncCommand.help" class="classattr">
                                 <div class="attr variable">
             <span class="name">help</span>        =
-<span class="default_value">&#39;poetry hook sync [options]&#39;</span>
+<input id="SyncCommand.help-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+            <label class="view-value-button pdoc-button" for="SyncCommand.help-view-value"></label><span class="default_value">&#39;To check if your environment is synchronized without making any changes\n    &lt;info&gt;poetry hook sync --dry-run&lt;/&gt;\n&#39;</span>
 
         
     </div>
