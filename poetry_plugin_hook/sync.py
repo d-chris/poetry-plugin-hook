@@ -12,7 +12,10 @@ class SyncCommand(InstallCommand):
     description = (
         "Synchronize the environment with the locked packages and the specified groups."
     )
-    help = "poetry hook sync [options]"
+    help = """\
+To check if your environment is synchronized without making any changes
+    <info>poetry hook sync --dry-run</>
+"""
 
     _true_options = ["sync"]
     _del_options = ["no-dev", "remove-untracked", "compile"]

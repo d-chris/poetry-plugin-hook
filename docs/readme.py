@@ -1,5 +1,22 @@
 import subprocess
-import textwrap
+
+
+def indent(text: str, spaces: int = 2) -> str:
+    """
+    Indent each line of a text by the given number of spaces.
+
+    Args:
+        text (str): The text to indent.
+        spaces (int): The number of spaces to indent by.
+
+    Returns:
+        str: The indented text.
+    """
+    prefix = " " * spaces
+
+    return "\n".join(
+        prefix + line.rstrip() if line.strip() else "" for line in text.splitlines()
+    )
 
 
 def shell(cmd: str) -> str:
@@ -20,9 +37,7 @@ def shell(cmd: str) -> str:
         capture_output=True,
     )
 
-    output = textwrap.indent(process.stdout.strip(), "  ")
-
-    return f"$ {cmd}\n\n{output}"
+    return f"$ {cmd}\n\n{indent(process.stdout.strip())}"
 
 
 def main():

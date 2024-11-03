@@ -8,7 +8,13 @@ from poetry_plugin_hook.redirect import buffered_io, strip_ansi
 class LatestCommand(ShowCommand):
     name = "hook latest"
     description = "Check if all top-level dependencies are up-to-date."
-    help = "poetry hook latest [options]"
+    help = """\
+To check if all top-level dependencies of your package are up-to-date
+    <info>poetry hook latest --only=main</>
+
+If a specific package is outdated
+    <info>poetry hook latest <package></>
+"""
 
     _version = (
         r"([1-9][0-9]*!)?"

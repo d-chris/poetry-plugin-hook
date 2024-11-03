@@ -46,5 +46,6 @@ repos:
       - id: readme
         name: rendering readme
         entry: poetry run python docs/readme.py
+        pass_filenames: false
         files: docs/README\.md\.jinja2|poetry_plugin_hook/.*\.py|.*\.yaml$
         language: system

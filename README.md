@@ -65,7 +65,11 @@ $ poetry hook latest --help
     -v|vv|vvv, --verbose       Increase the verbosity of messages: 1 for normal output, 2 for more verbose output and 3 for debug.
 
   Help:
-    poetry hook latest [options]
+    To check if all top-level dependencies of your package are up-to-date
+        poetry hook latest --only=main
+
+    If a specific package is outdated
+        poetry hook latest <package>
 ```
 
 ## hook sync
@@ -107,7 +111,8 @@ $ poetry hook sync --help
     -v|vv|vvv, --verbose       Increase the verbosity of messages: 1 for normal output, 2 for more verbose output and 3 for debug.
 
   Help:
-    poetry hook sync [options]
+    To check if your environment is synchronized without making any changes
+        poetry hook sync --dry-run
 ```
 
 ## pre-commit-config
