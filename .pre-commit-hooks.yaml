@@ -1,3 +1,11 @@
+- id: poetry-hook-bump
+  name: poetry-hook-bump
+  description: Bump the version of the package and also in files.
+  entry: poetry hook bump
+  language: system
+  pass_filenames: false
+  always_run: true
+  stages: [pre-push]
 - id: poetry-hook-latest
   name: poetry-hook-latest
   description: Check if all top-level dependencies are up-to-date.
