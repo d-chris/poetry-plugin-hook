@@ -4,6 +4,7 @@
 
 from poetry.plugins.application_plugin import ApplicationPlugin
 
+from poetry_plugin_hook.bump import BumpCommand
 from poetry_plugin_hook.latest import LatestCommand
 from poetry_plugin_hook.sync import SyncCommand
 
@@ -11,6 +12,10 @@ from poetry_plugin_hook.sync import SyncCommand
 class HookPlugin(ApplicationPlugin):
     def activate(self, application):
 
+        application.command_loader.register_factory(
+            BumpCommand.name,
+            lambda: BumpCommand(),
+        )
         application.command_loader.register_factory(
             LatestCommand.name,
             lambda: LatestCommand(),
@@ -22,6 +27,7 @@ class HookPlugin(ApplicationPlugin):
 
 
 __all__ = [
+    "BumpCommand",
     "LatestCommand",
     "SyncCommand",
 ]

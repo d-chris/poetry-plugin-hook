@@ -28,6 +28,49 @@ or with `poetry`
 $ poetry self add poetry-plugin-hook
 ```
 
+## hook bump
+
+Extends `poetry version` command, to also bump `__version__` strings in python files.
+
+```cmd
+$ poetry hook bump --help
+
+  Description:
+    Update the version in pyproject.toml and synchronize it into files.
+
+  Usage:
+    hook bump [options] [--] [<version>]
+
+  Arguments:
+    version                    The version number or the rule to update the version.
+
+  Options:
+    -f, --file=FILE            Specify the files to update the __version__ string. [default: ["__init__.py"]] (multiple values allowed)
+        --dry-run              Do not update pyproject.toml file
+        --next-phase           Increment the phase of the current version
+    -h, --help                 Display help for the given command. When no command is given display help for the list command.
+    -q, --quiet                Do not output any message.
+    -V, --version              Display this application version.
+        --ansi                 Force ANSI output.
+        --no-ansi              Disable ANSI output.
+    -n, --no-interaction       Do not ask any interactive question.
+        --no-plugins           Disables plugins.
+        --no-cache             Disables Poetry source caches.
+    -C, --directory=DIRECTORY  The working directory for the Poetry command (defaults to the current working directory).
+    -v|vv|vvv, --verbose       Increase the verbosity of messages: 1 for normal output, 2 for more verbose output and 3 for debug.
+
+  Help:
+    Update the version from package and also bumps __version__ strings in any given file.
+
+        poetry hook bump --next-phase patch --file __init__.py
+
+    The new version should ideally be a valid semver string or a valid bump rule:
+    patch, minor, major, prepatch, preminor, premajor, prerelease.
+
+    If no next-phase or version is provied the version from the pyproject.toml file will be
+    synced into the files.
+```
+
 ## hook latest
 
 Wrapper for `poetry show -o -T` command.
@@ -129,6 +172,7 @@ repos:
   - repo: https://github.com/d-chris/poetry-plugin-hook
     rev: v1.2.1
     hooks:
+      - id: poetry-hook-bump
       - id: poetry-hook-latest
         args: ["--only=main"]
       - id: poetry-hook-sync
@@ -180,6 +224,14 @@ repos:
 ## pre-commit-hooks
 
 ```yaml
+- id: poetry-hook-bump
+  name: poetry-hook-bump
+  description: Bump the version of the package and also in files.
+  entry: poetry hook bump
+  language: system
+  pass_filenames: false
+  always_run: true
+  stages: [pre-push]
 - id: poetry-hook-latest
   name: poetry-hook-latest
   description: Check if all top-level dependencies are up-to-date.
