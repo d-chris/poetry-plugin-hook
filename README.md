@@ -33,7 +33,7 @@ $ poetry self add poetry-plugin-hook
 Extends `poetry version` command, to also bump `__version__` strings in python files.
 
 ```cmd
-$ poetry hook bump --no-ansi --help
+$ poetry hook bump --help
 
   Description:
     Update the version in pyproject.toml and synchronize it into files.
@@ -78,7 +78,7 @@ Wrapper for `poetry show -o -T` command.
 Exit code represents the number of outdated packages.
 
 ```cmd
-$ poetry hook latest --no-ansi --help
+$ poetry hook latest --help
 
   Description:
     Check if all top-level dependencies are up-to-date.
@@ -122,7 +122,7 @@ Wrapper for `poetry install --sync` command.
 With `--exit` option, the command returns the corresponding value as exit code. With it's default `--exit=any` the sum of *installs*, *updates* and *removals* is returned.
 
 ```cmd
-$ poetry hook sync --no-ansi --help
+$ poetry hook sync --help
 
   Description:
     Synchronize the environment with the locked packages and the specified groups.
@@ -172,6 +172,7 @@ repos:
   - repo: https://github.com/d-chris/poetry-plugin-hook
     rev: v1.2.1
     hooks:
+      - id: poetry-hook-bump
       - id: poetry-hook-latest
         args: ["--only=main"]
       - id: poetry-hook-sync

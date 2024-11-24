@@ -7,6 +7,7 @@ repos:
   - repo: https://github.com/d-chris/poetry-plugin-hook
     rev: v1.2.1
     hooks:
+      - id: poetry-hook-bump
       - id: poetry-hook-latest
         args: ["--only=main"]
       - id: poetry-hook-sync

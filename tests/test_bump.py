@@ -22,16 +22,6 @@ def mock_version(mocker) -> Callable[[int], int]:
             return_value=return_value,
         )
 
-        # mocker.patch(
-        #     "poetry_plugin_hook.bump.VersionCommand.line",
-        #     return_value=None,
-        # )
-
-        # mocker.patch(
-        #     "poetry_plugin_hook.bump.VersionCommand.line_error",
-        #     return_value=None,
-        # )
-
         mocker.patch(
             "poetry_plugin_hook.bump.Path.write_text",
             return_value=0,
