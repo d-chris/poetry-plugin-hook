@@ -60,8 +60,15 @@ $ poetry hook bump --no-ansi --help
     -v|vv|vvv, --verbose       Increase the verbosity of messages: 1 for normal output, 2 for more verbose output and 3 for debug.
 
   Help:
-    Update the version from package and also updates __version__ strings in any given file.
-        poetry hook bump --next-phase minor --file __init__.py
+    Update the version from package and also bumps __version__ strings in any given file.
+
+        poetry hook bump --next-phase patch --file __init__.py
+
+    The new version should ideally be a valid semver string or a valid bump rule:
+    patch, minor, major, prepatch, preminor, premajor, prerelease.
+
+    If no next-phase or version is provied the version from the pyproject.toml file will be
+    synced into the files.
 ```
 
 ## hook latest

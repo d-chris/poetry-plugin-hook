@@ -1,6 +1,7 @@
 import os
 import re
 from pathlib import Path
+from typing import Any
 
 from cleo.helpers import option
 from poetry.console.commands.version import VersionCommand
@@ -20,8 +21,15 @@ class BumpCommand(VersionCommand):
     name = "hook bump"
     description = "Update the version in pyproject.toml and synchronize it into files."
     help = """\
-Update the version from package and also updates __version__ strings in any given file.
-    <info>poetry hook bump --next-phase minor --file __init__.py</>
+Update the version from package and also bumps __version__ strings in any given file.
+
+    <info>poetry hook bump --next-phase patch --file __init__.py</>
+
+The new version should ideally be a valid semver string or a valid bump rule:
+patch, minor, major, prepatch, preminor, premajor, prerelease.
+
+If no next-phase or version is provied the version from the pyproject.toml file will be
+synced into the files.
 """
 
     _regex = re.compile(
@@ -50,7 +58,10 @@ Update the version from package and also updates __version__ strings in any give
         """
         Package version from the pyproject.toml file.
         """
-        return self.poetry.package.version.text
+
+        content: dict[str, Any] = self.poetry.file.read()
+        poetry_content = content["tool"]["poetry"]
+        return poetry_content["version"]
 
     def substitute(self, file: Path, version: str) -> int:
         """
