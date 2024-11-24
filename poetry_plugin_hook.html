@@ -25,6 +25,7 @@
   <li><a href="#poetry-plugin-hook">poetry-plugin-hook</a>
   <ul>
     <li><a href="#install">install</a></li>
+    <li><a href="#hook-bump">hook bump</a></li>
     <li><a href="#hook-latest">hook latest</a></li>
     <li><a href="#hook-sync">hook sync</a></li>
     <li><a href="#pre-commit-config">pre-commit-config</a></li>
@@ -37,6 +38,42 @@
 
             <h2>API Documentation</h2>
                 <ul class="memberlist">
+            <li>
+                    <a class="class" href="#BumpCommand">BumpCommand</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#BumpCommand.name">name</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#BumpCommand.description">description</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#BumpCommand.help">help</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#BumpCommand.root_dir">root_dir</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#BumpCommand.package">package</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#BumpCommand.version">version</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#BumpCommand.substitute">substitute</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#BumpCommand.resolve">resolve</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#BumpCommand.configure">configure</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#BumpCommand.handle">handle</a>
+                        </li>
+                </ul>
+
+            </li>
             <li>
                     <a class="class" href="#LatestCommand">LatestCommand</a>
                             <ul class="memberlist">
@@ -123,6 +160,48 @@ poetry_plugin_hook    </h1>
 </blockquote>
 
 <pre><code>$ poetry self add poetry-plugin-hook
+</code></pre>
+
+<h2 id="hook-bump">hook bump</h2>
+
+<p>Extends <code>poetry version</code> command, to also bump <code>__version__</code> strings in python files.</p>
+
+<pre><code>$ poetry hook bump --help
+
+  Description:
+    Update the version in pyproject.toml and synchronize it into files.
+
+  Usage:
+    hook bump [options] [--] [&lt;version&gt;]
+
+  Arguments:
+    version                    The version number or the rule to update the version.
+
+  Options:
+    -f, --file=FILE            Specify the files to update the __version__ string. [default: ["__init__.py"]] (multiple values allowed)
+        --dry-run              Do not update pyproject.toml file
+        --next-phase           Increment the phase of the current version
+    -h, --help                 Display help for the given command. When no command is given display help for the list command.
+    -q, --quiet                Do not output any message.
+    -V, --version              Display this application version.
+        --ansi                 Force ANSI output.
+        --no-ansi              Disable ANSI output.
+    -n, --no-interaction       Do not ask any interactive question.
+        --no-plugins           Disables plugins.
+        --no-cache             Disables Poetry source caches.
+    -C, --directory=DIRECTORY  The working directory for the Poetry command (defaults to the current working directory).
+    -v|vv|vvv, --verbose       Increase the verbosity of messages: 1 for normal output, 2 for more verbose output and 3 for debug.
+
+  Help:
+    Update the version from package and also bumps __version__ strings in any given file.
+
+        poetry hook bump --next-phase patch --file __init__.py
+
+    The new version should ideally be a valid semver string or a valid bump rule:
+    patch, minor, major, prepatch, preminor, premajor, prerelease.
+
+    If no next-phase or version is provied the version from the pyproject.toml file will be
+    synced into the files.
 </code></pre>
 
 <h2 id="hook-latest">hook latest</h2>
@@ -224,6 +303,7 @@ poetry_plugin_hook    </h1>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">repo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/d-chris/poetry-plugin-hook</span>
 <span class="w">    </span><span class="nt">rev</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1.2.1</span>
 <span class="w">    </span><span class="nt">hooks</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">poetry-hook-bump</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">poetry-hook-latest</span>
 <span class="w">        </span><span class="nt">args</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;--only=main&quot;</span><span class="p p-Indicator">]</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">poetry-hook-sync</span>
@@ -278,7 +358,15 @@ poetry_plugin_hook    </h1>
 <h2 id="pre-commit-hooks">pre-commit-hooks</h2>
 
 <div class="pdoc-code codehilite">
-<pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">poetry-hook-latest</span>
+<pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">poetry-hook-bump</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">poetry-hook-bump</span>
+<span class="w">  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bump the version of the package and also in files.</span>
+<span class="w">  </span><span class="nt">entry</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">poetry hook bump</span>
+<span class="w">  </span><span class="nt">language</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">system</span>
+<span class="w">  </span><span class="nt">pass_filenames</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">always_run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">stages</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">pre-push</span><span class="p p-Indicator">]</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">poetry-hook-latest</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">poetry-hook-latest</span>
 <span class="w">  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Check if all top-level dependencies are up-to-date.</span>
 <span class="w">  </span><span class="nt">entry</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">poetry hook latest</span>
@@ -308,6 +396,222 @@ poetry_plugin_hook    </h1>
                 
                 
             </section>
+                <section id="BumpCommand">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">BumpCommand</span><wbr>(<span class="base"><a href="poetry/console/commands/version.html#VersionCommand">poetry.console.commands.version.VersionCommand</a></span>):
+
+        
+    </div>
+    <a class="headerlink" href="#BumpCommand"></a>
+    
+    
+
+                            <div id="BumpCommand.name" class="classattr">
+                                <div class="attr variable">
+            <span class="name">name</span>        =
+<span class="default_value">&#39;hook bump&#39;</span>
+
+        
+    </div>
+    <a class="headerlink" href="#BumpCommand.name"></a>
+    
+    
+
+                            </div>
+                            <div id="BumpCommand.description" class="classattr">
+                                <div class="attr variable">
+            <span class="name">description</span>        =
+<span class="default_value">&#39;Update the version in pyproject.toml and synchronize it into files.&#39;</span>
+
+        
+    </div>
+    <a class="headerlink" href="#BumpCommand.description"></a>
+    
+    
+
+                            </div>
+                            <div id="BumpCommand.help" class="classattr">
+                                <div class="attr variable">
+            <span class="name">help</span>        =
+<input id="BumpCommand.help-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+            <label class="view-value-button pdoc-button" for="BumpCommand.help-view-value"></label><span class="default_value">&#39;Update the version from package and also bumps __version__ strings in any given file.\n\n    &lt;info&gt;poetry hook bump --next-phase patch --file __init__.py&lt;/&gt;\n\nThe new version should ideally be a valid semver string or a valid bump rule:\npatch, minor, major, prepatch, preminor, premajor, prerelease.\n\nIf no next-phase or version is provied the version from the pyproject.toml file will be\nsynced into the files.\n&#39;</span>
+
+        
+    </div>
+    <a class="headerlink" href="#BumpCommand.help"></a>
+    
+    
+
+                            </div>
+                            <div id="BumpCommand.root_dir" class="classattr">
+                                <div class="attr variable">
+            <span class="name">root_dir</span><span class="annotation">: pathlib.Path</span>
+
+        
+    </div>
+    <a class="headerlink" href="#BumpCommand.root_dir"></a>
+    
+            <div class="docstring"><p>Parent of the pyproject.toml file.</p>
+</div>
+
+
+                            </div>
+                            <div id="BumpCommand.package" class="classattr">
+                                <div class="attr variable">
+            <span class="name">package</span><span class="annotation">: pathlib.Path</span>
+
+        
+    </div>
+    <a class="headerlink" href="#BumpCommand.package"></a>
+    
+            <div class="docstring"><p>Path to the package directory.</p>
+</div>
+
+
+                            </div>
+                            <div id="BumpCommand.version" class="classattr">
+                                <div class="attr variable">
+            <span class="name">version</span><span class="annotation">: str</span>
+
+        
+    </div>
+    <a class="headerlink" href="#BumpCommand.version"></a>
+    
+            <div class="docstring"><p>Package version from the pyproject.toml file.</p>
+</div>
+
+
+                            </div>
+                            <div id="BumpCommand.substitute" class="classattr">
+                                <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">substitute</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>, </span><span class="param"><span class="n">version</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="nb">int</span>:</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#BumpCommand.substitute"></a>
+    
+            <div class="docstring"><p>Substitute the version in the file.</p>
+</div>
+
+
+                            </div>
+                            <div id="BumpCommand.resolve" class="classattr">
+                                <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">resolve</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">filename</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>:</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#BumpCommand.resolve"></a>
+    
+            <div class="docstring"><p>Resolve the file path to the package directory.</p>
+</div>
+
+
+                            </div>
+                            <div id="BumpCommand.configure" class="classattr">
+                                <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">configure</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span></span><span class="return-annotation">) -> <span class="kc">None</span>:</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#BumpCommand.configure"></a>
+    
+            <div class="docstring"><p>Modifiy all options from <code>poetry version</code> to fit the <code>poetry hook bump</code>
+command.</p>
+</div>
+
+
+                            </div>
+                            <div id="BumpCommand.handle" class="classattr">
+                                <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">handle</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span></span><span class="return-annotation">) -> <span class="nb">int</span>:</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#BumpCommand.handle"></a>
+    
+            <div class="docstring"><p>Execute the command.</p>
+</div>
+
+
+                            </div>
+                            <div class="inherited">
+                                <h5>Inherited Members</h5>
+                                <dl>
+                                    <div><dt><a href="cleo/commands/command.html#Command">cleo.commands.command.Command</a></dt>
+                                <dd id="BumpCommand.aliases" class="variable"><a href="cleo/commands/command.html#Command.aliases">aliases</a></dd>
+                <dd id="BumpCommand.usages" class="variable"><a href="cleo/commands/command.html#Command.usages">usages</a></dd>
+                <dd id="BumpCommand.commands" class="variable"><a href="cleo/commands/command.html#Command.commands">commands</a></dd>
+                <dd id="BumpCommand.io" class="variable"><a href="cleo/commands/command.html#Command.io">io</a></dd>
+                <dd id="BumpCommand.execute" class="function"><a href="cleo/commands/command.html#Command.execute">execute</a></dd>
+                <dd id="BumpCommand.call" class="function"><a href="cleo/commands/command.html#Command.call">call</a></dd>
+                <dd id="BumpCommand.call_silent" class="function"><a href="cleo/commands/command.html#Command.call_silent">call_silent</a></dd>
+                <dd id="BumpCommand.argument" class="function"><a href="cleo/commands/command.html#Command.argument">argument</a></dd>
+                <dd id="BumpCommand.confirm" class="function"><a href="cleo/commands/command.html#Command.confirm">confirm</a></dd>
+                <dd id="BumpCommand.ask" class="function"><a href="cleo/commands/command.html#Command.ask">ask</a></dd>
+                <dd id="BumpCommand.secret" class="function"><a href="cleo/commands/command.html#Command.secret">secret</a></dd>
+                <dd id="BumpCommand.choice" class="function"><a href="cleo/commands/command.html#Command.choice">choice</a></dd>
+                <dd id="BumpCommand.create_question" class="function"><a href="cleo/commands/command.html#Command.create_question">create_question</a></dd>
+                <dd id="BumpCommand.table" class="function"><a href="cleo/commands/command.html#Command.table">table</a></dd>
+                <dd id="BumpCommand.table_separator" class="function"><a href="cleo/commands/command.html#Command.table_separator">table_separator</a></dd>
+                <dd id="BumpCommand.render_table" class="function"><a href="cleo/commands/command.html#Command.render_table">render_table</a></dd>
+                <dd id="BumpCommand.write" class="function"><a href="cleo/commands/command.html#Command.write">write</a></dd>
+                <dd id="BumpCommand.line" class="function"><a href="cleo/commands/command.html#Command.line">line</a></dd>
+                <dd id="BumpCommand.line_error" class="function"><a href="cleo/commands/command.html#Command.line_error">line_error</a></dd>
+                <dd id="BumpCommand.info" class="function"><a href="cleo/commands/command.html#Command.info">info</a></dd>
+                <dd id="BumpCommand.comment" class="function"><a href="cleo/commands/command.html#Command.comment">comment</a></dd>
+                <dd id="BumpCommand.question" class="function"><a href="cleo/commands/command.html#Command.question">question</a></dd>
+                <dd id="BumpCommand.progress_bar" class="function"><a href="cleo/commands/command.html#Command.progress_bar">progress_bar</a></dd>
+                <dd id="BumpCommand.progress_indicator" class="function"><a href="cleo/commands/command.html#Command.progress_indicator">progress_indicator</a></dd>
+                <dd id="BumpCommand.spin" class="function"><a href="cleo/commands/command.html#Command.spin">spin</a></dd>
+                <dd id="BumpCommand.add_style" class="function"><a href="cleo/commands/command.html#Command.add_style">add_style</a></dd>
+                <dd id="BumpCommand.overwrite" class="function"><a href="cleo/commands/command.html#Command.overwrite">overwrite</a></dd>
+
+            </div>
+            <div><dt><a href="poetry/console/commands/version.html#VersionCommand">poetry.console.commands.version.VersionCommand</a></dt>
+                                <dd id="BumpCommand.arguments" class="variable"><a href="poetry/console/commands/version.html#VersionCommand.arguments">arguments</a></dd>
+                <dd id="BumpCommand.options" class="variable"><a href="poetry/console/commands/version.html#VersionCommand.options">options</a></dd>
+                <dd id="BumpCommand.RESERVED" class="variable"><a href="poetry/console/commands/version.html#VersionCommand.RESERVED">RESERVED</a></dd>
+                <dd id="BumpCommand.increment_version" class="function"><a href="poetry/console/commands/version.html#VersionCommand.increment_version">increment_version</a></dd>
+
+            </div>
+            <div><dt><a href="poetry/console/commands/command.html#Command">poetry.console.commands.command.Command</a></dt>
+                                <dd id="BumpCommand.loggers" class="variable"><a href="poetry/console/commands/command.html#Command.loggers">loggers</a></dd>
+                <dd id="BumpCommand.poetry" class="variable"><a href="poetry/console/commands/command.html#Command.poetry">poetry</a></dd>
+                <dd id="BumpCommand.set_poetry" class="function"><a href="poetry/console/commands/command.html#Command.set_poetry">set_poetry</a></dd>
+                <dd id="BumpCommand.get_application" class="function"><a href="poetry/console/commands/command.html#Command.get_application">get_application</a></dd>
+                <dd id="BumpCommand.reset_poetry" class="function"><a href="poetry/console/commands/command.html#Command.reset_poetry">reset_poetry</a></dd>
+                <dd id="BumpCommand.option" class="function"><a href="poetry/console/commands/command.html#Command.option">option</a></dd>
+
+            </div>
+            <div><dt><a href="cleo/commands/base_command.html#BaseCommand">cleo.commands.base_command.BaseCommand</a></dt>
+                                <dd id="BumpCommand.enabled" class="variable"><a href="cleo/commands/base_command.html#BaseCommand.enabled">enabled</a></dd>
+                <dd id="BumpCommand.hidden" class="variable"><a href="cleo/commands/base_command.html#BaseCommand.hidden">hidden</a></dd>
+                <dd id="BumpCommand.application" class="variable"><a href="cleo/commands/base_command.html#BaseCommand.application">application</a></dd>
+                <dd id="BumpCommand.definition" class="variable"><a href="cleo/commands/base_command.html#BaseCommand.definition">definition</a></dd>
+                <dd id="BumpCommand.processed_help" class="variable"><a href="cleo/commands/base_command.html#BaseCommand.processed_help">processed_help</a></dd>
+                <dd id="BumpCommand.ignore_validation_errors" class="function"><a href="cleo/commands/base_command.html#BaseCommand.ignore_validation_errors">ignore_validation_errors</a></dd>
+                <dd id="BumpCommand.set_application" class="function"><a href="cleo/commands/base_command.html#BaseCommand.set_application">set_application</a></dd>
+                <dd id="BumpCommand.interact" class="function"><a href="cleo/commands/base_command.html#BaseCommand.interact">interact</a></dd>
+                <dd id="BumpCommand.initialize" class="function"><a href="cleo/commands/base_command.html#BaseCommand.initialize">initialize</a></dd>
+                <dd id="BumpCommand.run" class="function"><a href="cleo/commands/base_command.html#BaseCommand.run">run</a></dd>
+                <dd id="BumpCommand.merge_application_definition" class="function"><a href="cleo/commands/base_command.html#BaseCommand.merge_application_definition">merge_application_definition</a></dd>
+                <dd id="BumpCommand.synopsis" class="function"><a href="cleo/commands/base_command.html#BaseCommand.synopsis">synopsis</a></dd>
+
+            </div>
+                                </dl>
+                            </div>
+                </section>
                 <section id="LatestCommand">
                     <div class="attr class">
             
