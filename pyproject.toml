@@ -28,7 +28,7 @@ documentation = "https://d-chris.github.io/poetry-plugin-hook"
 
 [tool.poetry.dependencies]
 python = "^3.9"
-poetry = "^1.7.0"
+poetry = ">=1.7.0"
 cleo = "^2.1.0"
 
 [tool.poetry.group.test.dependencies]

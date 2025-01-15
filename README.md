@@ -56,7 +56,8 @@ $ poetry hook bump --help
     -n, --no-interaction       Do not ask any interactive question.
         --no-plugins           Disables plugins.
         --no-cache             Disables Poetry source caches.
-    -C, --directory=DIRECTORY  The working directory for the Poetry command (defaults to the current working directory).
+    -P, --project=PROJECT      Specify another path as the project root. All command-line arguments will be resolved relative to the current working directory.
+    -C, --directory=DIRECTORY  The working directory for the Poetry command (defaults to the current working directory). All command-line arguments will be resolved relative to the given directory.
     -v|vv|vvv, --verbose       Increase the verbosity of messages: 1 for normal output, 2 for more verbose output and 3 for debug.
 
   Help:
@@ -104,7 +105,8 @@ $ poetry hook latest --help
     -n, --no-interaction       Do not ask any interactive question.
         --no-plugins           Disables plugins.
         --no-cache             Disables Poetry source caches.
-    -C, --directory=DIRECTORY  The working directory for the Poetry command (defaults to the current working directory).
+    -P, --project=PROJECT      Specify another path as the project root. All command-line arguments will be resolved relative to the current working directory.
+    -C, --directory=DIRECTORY  The working directory for the Poetry command (defaults to the current working directory). All command-line arguments will be resolved relative to the given directory.
     -v|vv|vvv, --verbose       Increase the verbosity of messages: 1 for normal output, 2 for more verbose output and 3 for debug.
 
   Help:
@@ -135,12 +137,13 @@ $ poetry hook sync --help
         --without=WITHOUT      The dependency groups to ignore. (multiple values allowed)
         --with=WITH            The optional dependency groups to include. (multiple values allowed)
         --only=ONLY            The only dependency groups to include. (multiple values allowed)
-        --sync                 Synchronize the environment with the locked packages and the specified groups. (option is always True)
+        --sync                 Synchronize the environment with the locked packages and the specified groups. (Deprecated) (option is always True)
         --no-root              Do not install the root package (the current project).
         --no-directory         Do not install any directory path dependencies; useful to install dependencies without source code, e.g. for caching of Docker layers)
         --dry-run              Output the operations but do not execute anything (implicitly enables --verbose).
     -E, --extras=EXTRAS        Extra sets of dependencies to install. (multiple values allowed)
         --all-extras           Install all extra dependencies.
+        --all-groups           Install dependencies from all groups.
         --only-root            Exclude all dependencies.
     -h, --help                 Display help for the given command. When no command is given display help for the list command.
     -q, --quiet                Do not output any message.
@@ -150,7 +153,8 @@ $ poetry hook sync --help
     -n, --no-interaction       Do not ask any interactive question.
         --no-plugins           Disables plugins.
         --no-cache             Disables Poetry source caches.
-    -C, --directory=DIRECTORY  The working directory for the Poetry command (defaults to the current working directory).
+    -P, --project=PROJECT      Specify another path as the project root. All command-line arguments will be resolved relative to the current working directory.
+    -C, --directory=DIRECTORY  The working directory for the Poetry command (defaults to the current working directory). All command-line arguments will be resolved relative to the given directory.
     -v|vv|vvv, --verbose       Increase the verbosity of messages: 1 for normal output, 2 for more verbose output and 3 for debug.
 
   Help:

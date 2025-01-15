@@ -1,3 +1,4 @@
+import re
 import subprocess
 
 
@@ -37,7 +38,11 @@ def shell(cmd: str) -> str:
         capture_output=True,
     )
 
-    return f"$ {cmd}\n\n{indent(process.stdout.strip())}"
+    # Remove ANSI escape codes
+    ansi_escape = re.compile(r"\x1b\[([0-9]+)(;[0-9]+)*m")
+    output = ansi_escape.sub("", process.stdout)
+
+    return f"$ {cmd}\n\n{indent(output.strip())}"
 
 
 def main():
