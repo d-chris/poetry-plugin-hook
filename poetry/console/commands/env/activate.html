@@ -3,8 +3,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="generator" content="pdoc 15.0.0"/>
-    <title>poetry.layouts.standard API documentation</title>
+    <meta name="generator" content="pdoc 15.0.1"/>
+    <title>poetry.console.commands.env.activate API documentation</title>
 
     <style>/*! * Bootstrap Reboot v5.0.0 (https://getbootstrap.com/) * Copyright 2011-2021 The Bootstrap Authors * Copyright 2011-2021 Twitter, Inc. * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE) * Forked from Normalize.css, licensed MIT (https://github.com/necolas/normalize.css/blob/master/LICENSE.md) */*,::after,::before{box-sizing:border-box}@media (prefers-reduced-motion:no-preference){:root{scroll-behavior:smooth}}body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";font-size:1rem;font-weight:400;line-height:1.5;color:#212529;background-color:#fff;-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent}hr{margin:1rem 0;color:inherit;background-color:currentColor;border:0;opacity:.25}hr:not([size]){height:1px}h1,h2,h3,h4,h5,h6{margin-top:0;margin-bottom:.5rem;font-weight:500;line-height:1.2}h1{font-size:calc(1.375rem + 1.5vw)}@media (min-width:1200px){h1{font-size:2.5rem}}h2{font-size:calc(1.325rem + .9vw)}@media (min-width:1200px){h2{font-size:2rem}}h3{font-size:calc(1.3rem + .6vw)}@media (min-width:1200px){h3{font-size:1.75rem}}h4{font-size:calc(1.275rem + .3vw)}@media (min-width:1200px){h4{font-size:1.5rem}}h5{font-size:1.25rem}h6{font-size:1rem}p{margin-top:0;margin-bottom:1rem}abbr[data-bs-original-title],abbr[title]{-webkit-text-decoration:underline dotted;text-decoration:underline dotted;cursor:help;-webkit-text-decoration-skip-ink:none;text-decoration-skip-ink:none}address{margin-bottom:1rem;font-style:normal;line-height:inherit}ol,ul{padding-left:2rem}dl,ol,ul{margin-top:0;margin-bottom:1rem}ol ol,ol ul,ul ol,ul ul{margin-bottom:0}dt{font-weight:700}dd{margin-bottom:.5rem;margin-left:0}blockquote{margin:0 0 1rem}b,strong{font-weight:bolder}small{font-size:.875em}mark{padding:.2em;background-color:#fcf8e3}sub,sup{position:relative;font-size:.75em;line-height:0;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}a{color:#0d6efd;text-decoration:underline}a:hover{color:#0a58ca}a:not([href]):not([class]),a:not([href]):not([class]):hover{color:inherit;text-decoration:none}code,kbd,pre,samp{font-family:SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;font-size:1em;direction:ltr;unicode-bidi:bidi-override}pre{display:block;margin-top:0;margin-bottom:1rem;overflow:auto;font-size:.875em}pre code{font-size:inherit;color:inherit;word-break:normal}code{font-size:.875em;color:#d63384;word-wrap:break-word}a>code{color:inherit}kbd{padding:.2rem .4rem;font-size:.875em;color:#fff;background-color:#212529;border-radius:.2rem}kbd kbd{padding:0;font-size:1em;font-weight:700}figure{margin:0 0 1rem}img,svg{vertical-align:middle}table{caption-side:bottom;border-collapse:collapse}caption{padding-top:.5rem;padding-bottom:.5rem;color:#6c757d;text-align:left}th{text-align:inherit;text-align:-webkit-match-parent}tbody,td,tfoot,th,thead,tr{border-color:inherit;border-style:solid;border-width:0}label{display:inline-block}button{border-radius:0}button:focus:not(:focus-visible){outline:0}button,input,optgroup,select,textarea{margin:0;font-family:inherit;font-size:inherit;line-height:inherit}button,select{text-transform:none}[role=button]{cursor:pointer}select{word-wrap:normal}select:disabled{opacity:1}[list]::-webkit-calendar-picker-indicator{display:none}[type=button],[type=reset],[type=submit],button{-webkit-appearance:button}[type=button]:not(:disabled),[type=reset]:not(:disabled),[type=submit]:not(:disabled),button:not(:disabled){cursor:pointer}::-moz-focus-inner{padding:0;border-style:none}textarea{resize:vertical}fieldset{min-width:0;padding:0;margin:0;border:0}legend{float:left;width:100%;padding:0;margin-bottom:.5rem;font-size:calc(1.275rem + .3vw);line-height:inherit}@media (min-width:1200px){legend{font-size:1.5rem}}legend+*{clear:left}::-webkit-datetime-edit-day-field,::-webkit-datetime-edit-fields-wrapper,::-webkit-datetime-edit-hour-field,::-webkit-datetime-edit-minute,::-webkit-datetime-edit-month-field,::-webkit-datetime-edit-text,::-webkit-datetime-edit-year-field{padding:0}::-webkit-inner-spin-button{height:auto}[type=search]{outline-offset:-2px;-webkit-appearance:textfield}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-color-swatch-wrapper{padding:0}::file-selector-button{font:inherit}::-webkit-file-upload-button{font:inherit;-webkit-appearance:button}output{display:inline-block}iframe{border:0}summary{display:list-item;cursor:pointer}progress{vertical-align:baseline}[hidden]{display:none!important}</style>
     <style>/*! syntax-highlighting.css */pre{line-height:125%;}span.linenos{color:inherit; background-color:transparent; padding-left:5px; padding-right:20px;}.pdoc-code .hll{background-color:#49483e}.pdoc-code{background:#272822; color:#f8f8f2}.pdoc-code .c{color:#75715e}.pdoc-code .err{color:#960050; background-color:#1e0010}.pdoc-code .esc{color:#f8f8f2}.pdoc-code .g{color:#f8f8f2}.pdoc-code .k{color:#66d9ef}.pdoc-code .l{color:#ae81ff}.pdoc-code .n{color:#f8f8f2}.pdoc-code .o{color:#f92672}.pdoc-code .x{color:#f8f8f2}.pdoc-code .p{color:#f8f8f2}.pdoc-code .ch{color:#75715e}.pdoc-code .cm{color:#75715e}.pdoc-code .cp{color:#75715e}.pdoc-code .cpf{color:#75715e}.pdoc-code .c1{color:#75715e}.pdoc-code .cs{color:#75715e}.pdoc-code .gd{color:#f92672}.pdoc-code .ge{color:#f8f8f2; font-style:italic}.pdoc-code .gr{color:#f8f8f2}.pdoc-code .gh{color:#f8f8f2}.pdoc-code .gi{color:#a6e22e}.pdoc-code .go{color:#66d9ef}.pdoc-code .gp{color:#f92672; font-weight:bold}.pdoc-code .gs{color:#f8f8f2; font-weight:bold}.pdoc-code .gu{color:#75715e}.pdoc-code .gt{color:#f8f8f2}.pdoc-code .kc{color:#66d9ef}.pdoc-code .kd{color:#66d9ef}.pdoc-code .kn{color:#f92672}.pdoc-code .kp{color:#66d9ef}.pdoc-code .kr{color:#66d9ef}.pdoc-code .kt{color:#66d9ef}.pdoc-code .ld{color:#e6db74}.pdoc-code .m{color:#ae81ff}.pdoc-code .s{color:#e6db74}.pdoc-code .na{color:#a6e22e}.pdoc-code .nb{color:#f8f8f2}.pdoc-code .nc{color:#a6e22e}.pdoc-code .no{color:#66d9ef}.pdoc-code .nd{color:#a6e22e}.pdoc-code .ni{color:#f8f8f2}.pdoc-code .ne{color:#a6e22e}.pdoc-code .nf{color:#a6e22e}.pdoc-code .nl{color:#f8f8f2}.pdoc-code .nn{color:#f8f8f2}.pdoc-code .nx{color:#a6e22e}.pdoc-code .py{color:#f8f8f2}.pdoc-code .nt{color:#f92672}.pdoc-code .nv{color:#f8f8f2}.pdoc-code .ow{color:#f92672}.pdoc-code .w{color:#f8f8f2}.pdoc-code .mb{color:#ae81ff}.pdoc-code .mf{color:#ae81ff}.pdoc-code .mh{color:#ae81ff}.pdoc-code .mi{color:#ae81ff}.pdoc-code .mo{color:#ae81ff}.pdoc-code .sa{color:#e6db74}.pdoc-code .sb{color:#e6db74}.pdoc-code .sc{color:#e6db74}.pdoc-code .dl{color:#e6db74}.pdoc-code .sd{color:#e6db74}.pdoc-code .s2{color:#e6db74}.pdoc-code .se{color:#ae81ff}.pdoc-code .sh{color:#e6db74}.pdoc-code .si{color:#e6db74}.pdoc-code .sx{color:#e6db74}.pdoc-code .sr{color:#e6db74}.pdoc-code .s1{color:#e6db74}.pdoc-code .ss{color:#e6db74}.pdoc-code .bp{color:#f8f8f2}.pdoc-code .fm{color:#a6e22e}.pdoc-code .vc{color:#f8f8f2}.pdoc-code .vg{color:#f8f8f2}.pdoc-code .vi{color:#f8f8f2}.pdoc-code .vm{color:#f8f8f2}</style>
@@ -22,6 +22,31 @@
 
 
 
+            <h2>API Documentation</h2>
+                <ul class="memberlist">
+            <li>
+                    <a class="class" href="#ShellNotSupportedError">ShellNotSupportedError</a>
+                            <ul class="memberlist">
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#EnvActivateCommand">EnvActivateCommand</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#EnvActivateCommand.name">name</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#EnvActivateCommand.description">description</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#EnvActivateCommand.handle">handle</a>
+                        </li>
+                </ul>
+
+            </li>
+    </ul>
+
 
 
         <a class="attribution" title="pdoc: Python API documentation generator" href="https://pdoc.dev" target="_blank">
@@ -34,13 +59,143 @@
     <main class="pdoc">
             <section class="module-info">
                     <h1 class="modulename">
-<a href="./../../poetry.html">poetry</a><wbr>.<a href="./../layouts.html">layouts</a><wbr>.standard    </h1>
+<a href="./../../../../poetry.html">poetry</a><wbr>.<a href="./../../../console.html">console</a><wbr>.<a href="./../../commands.html">commands</a><wbr>.<a href="./../env.html">env</a><wbr>.activate    </h1>
 
                 
                 
                 
                 
             </section>
+                <section id="ShellNotSupportedError">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">ShellNotSupportedError</span><wbr>(<span class="base">builtins.Exception</span>):
+
+        
+    </div>
+    <a class="headerlink" href="#ShellNotSupportedError"></a>
+    
+            <div class="docstring"><p>Raised when a shell doesn't have an activator in virtual environment</p>
+</div>
+
+
+                </section>
+                <section id="EnvActivateCommand">
+                    <div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">EnvActivateCommand</span><wbr>(<span class="base"><a href="../command.html#Command">poetry.console.commands.command.Command</a></span>):
+
+        
+    </div>
+    <a class="headerlink" href="#EnvActivateCommand"></a>
+    
+    
+
+                            <div id="EnvActivateCommand.name" class="classattr">
+                                <div class="attr variable">
+            <span class="name">name</span>        =
+<span class="default_value">&#39;env activate&#39;</span>
+
+        
+    </div>
+    <a class="headerlink" href="#EnvActivateCommand.name"></a>
+    
+    
+
+                            </div>
+                            <div id="EnvActivateCommand.description" class="classattr">
+                                <div class="attr variable">
+            <span class="name">description</span>        =
+<span class="default_value">&#39;Print the command to activate a virtual environment.&#39;</span>
+
+        
+    </div>
+    <a class="headerlink" href="#EnvActivateCommand.description"></a>
+    
+    
+
+                            </div>
+                            <div id="EnvActivateCommand.handle" class="classattr">
+                                <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">handle</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span></span><span class="return-annotation">) -> <span class="nb">int</span>:</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#EnvActivateCommand.handle"></a>
+    
+            <div class="docstring"><p>Execute the command.</p>
+</div>
+
+
+                            </div>
+                            <div class="inherited">
+                                <h5>Inherited Members</h5>
+                                <dl>
+                                    <div><dt><a href="../../../../cleo/commands/command.html#Command">cleo.commands.command.Command</a></dt>
+                                <dd id="EnvActivateCommand.arguments" class="variable"><a href="../../../../cleo/commands/command.html#Command.arguments">arguments</a></dd>
+                <dd id="EnvActivateCommand.options" class="variable"><a href="../../../../cleo/commands/command.html#Command.options">options</a></dd>
+                <dd id="EnvActivateCommand.aliases" class="variable"><a href="../../../../cleo/commands/command.html#Command.aliases">aliases</a></dd>
+                <dd id="EnvActivateCommand.usages" class="variable"><a href="../../../../cleo/commands/command.html#Command.usages">usages</a></dd>
+                <dd id="EnvActivateCommand.commands" class="variable"><a href="../../../../cleo/commands/command.html#Command.commands">commands</a></dd>
+                <dd id="EnvActivateCommand.io" class="variable"><a href="../../../../cleo/commands/command.html#Command.io">io</a></dd>
+                <dd id="EnvActivateCommand.configure" class="function"><a href="../../../../cleo/commands/command.html#Command.configure">configure</a></dd>
+                <dd id="EnvActivateCommand.execute" class="function"><a href="../../../../cleo/commands/command.html#Command.execute">execute</a></dd>
+                <dd id="EnvActivateCommand.call" class="function"><a href="../../../../cleo/commands/command.html#Command.call">call</a></dd>
+                <dd id="EnvActivateCommand.call_silent" class="function"><a href="../../../../cleo/commands/command.html#Command.call_silent">call_silent</a></dd>
+                <dd id="EnvActivateCommand.argument" class="function"><a href="../../../../cleo/commands/command.html#Command.argument">argument</a></dd>
+                <dd id="EnvActivateCommand.confirm" class="function"><a href="../../../../cleo/commands/command.html#Command.confirm">confirm</a></dd>
+                <dd id="EnvActivateCommand.ask" class="function"><a href="../../../../cleo/commands/command.html#Command.ask">ask</a></dd>
+                <dd id="EnvActivateCommand.secret" class="function"><a href="../../../../cleo/commands/command.html#Command.secret">secret</a></dd>
+                <dd id="EnvActivateCommand.choice" class="function"><a href="../../../../cleo/commands/command.html#Command.choice">choice</a></dd>
+                <dd id="EnvActivateCommand.create_question" class="function"><a href="../../../../cleo/commands/command.html#Command.create_question">create_question</a></dd>
+                <dd id="EnvActivateCommand.table" class="function"><a href="../../../../cleo/commands/command.html#Command.table">table</a></dd>
+                <dd id="EnvActivateCommand.table_separator" class="function"><a href="../../../../cleo/commands/command.html#Command.table_separator">table_separator</a></dd>
+                <dd id="EnvActivateCommand.render_table" class="function"><a href="../../../../cleo/commands/command.html#Command.render_table">render_table</a></dd>
+                <dd id="EnvActivateCommand.write" class="function"><a href="../../../../cleo/commands/command.html#Command.write">write</a></dd>
+                <dd id="EnvActivateCommand.line" class="function"><a href="../../../../cleo/commands/command.html#Command.line">line</a></dd>
+                <dd id="EnvActivateCommand.line_error" class="function"><a href="../../../../cleo/commands/command.html#Command.line_error">line_error</a></dd>
+                <dd id="EnvActivateCommand.info" class="function"><a href="../../../../cleo/commands/command.html#Command.info">info</a></dd>
+                <dd id="EnvActivateCommand.comment" class="function"><a href="../../../../cleo/commands/command.html#Command.comment">comment</a></dd>
+                <dd id="EnvActivateCommand.question" class="function"><a href="../../../../cleo/commands/command.html#Command.question">question</a></dd>
+                <dd id="EnvActivateCommand.progress_bar" class="function"><a href="../../../../cleo/commands/command.html#Command.progress_bar">progress_bar</a></dd>
+                <dd id="EnvActivateCommand.progress_indicator" class="function"><a href="../../../../cleo/commands/command.html#Command.progress_indicator">progress_indicator</a></dd>
+                <dd id="EnvActivateCommand.spin" class="function"><a href="../../../../cleo/commands/command.html#Command.spin">spin</a></dd>
+                <dd id="EnvActivateCommand.add_style" class="function"><a href="../../../../cleo/commands/command.html#Command.add_style">add_style</a></dd>
+                <dd id="EnvActivateCommand.overwrite" class="function"><a href="../../../../cleo/commands/command.html#Command.overwrite">overwrite</a></dd>
+
+            </div>
+            <div><dt><a href="../command.html#Command">poetry.console.commands.command.Command</a></dt>
+                                <dd id="EnvActivateCommand.loggers" class="variable"><a href="../command.html#Command.loggers">loggers</a></dd>
+                <dd id="EnvActivateCommand.poetry" class="variable"><a href="../command.html#Command.poetry">poetry</a></dd>
+                <dd id="EnvActivateCommand.set_poetry" class="function"><a href="../command.html#Command.set_poetry">set_poetry</a></dd>
+                <dd id="EnvActivateCommand.get_application" class="function"><a href="../command.html#Command.get_application">get_application</a></dd>
+                <dd id="EnvActivateCommand.reset_poetry" class="function"><a href="../command.html#Command.reset_poetry">reset_poetry</a></dd>
+                <dd id="EnvActivateCommand.option" class="function"><a href="../command.html#Command.option">option</a></dd>
+
+            </div>
+            <div><dt><a href="../../../../cleo/commands/base_command.html#BaseCommand">cleo.commands.base_command.BaseCommand</a></dt>
+                                <dd id="EnvActivateCommand.help" class="variable"><a href="../../../../cleo/commands/base_command.html#BaseCommand.help">help</a></dd>
+                <dd id="EnvActivateCommand.enabled" class="variable"><a href="../../../../cleo/commands/base_command.html#BaseCommand.enabled">enabled</a></dd>
+                <dd id="EnvActivateCommand.hidden" class="variable"><a href="../../../../cleo/commands/base_command.html#BaseCommand.hidden">hidden</a></dd>
+                <dd id="EnvActivateCommand.application" class="variable"><a href="../../../../cleo/commands/base_command.html#BaseCommand.application">application</a></dd>
+                <dd id="EnvActivateCommand.definition" class="variable"><a href="../../../../cleo/commands/base_command.html#BaseCommand.definition">definition</a></dd>
+                <dd id="EnvActivateCommand.processed_help" class="variable"><a href="../../../../cleo/commands/base_command.html#BaseCommand.processed_help">processed_help</a></dd>
+                <dd id="EnvActivateCommand.ignore_validation_errors" class="function"><a href="../../../../cleo/commands/base_command.html#BaseCommand.ignore_validation_errors">ignore_validation_errors</a></dd>
+                <dd id="EnvActivateCommand.set_application" class="function"><a href="../../../../cleo/commands/base_command.html#BaseCommand.set_application">set_application</a></dd>
+                <dd id="EnvActivateCommand.interact" class="function"><a href="../../../../cleo/commands/base_command.html#BaseCommand.interact">interact</a></dd>
+                <dd id="EnvActivateCommand.initialize" class="function"><a href="../../../../cleo/commands/base_command.html#BaseCommand.initialize">initialize</a></dd>
+                <dd id="EnvActivateCommand.run" class="function"><a href="../../../../cleo/commands/base_command.html#BaseCommand.run">run</a></dd>
+                <dd id="EnvActivateCommand.merge_application_definition" class="function"><a href="../../../../cleo/commands/base_command.html#BaseCommand.merge_application_definition">merge_application_definition</a></dd>
+                <dd id="EnvActivateCommand.synopsis" class="function"><a href="../../../../cleo/commands/base_command.html#BaseCommand.synopsis">synopsis</a></dd>
+
+            </div>
+                                </dl>
+                            </div>
+                </section>
     </main>
 </body>
 </html>

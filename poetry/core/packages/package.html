@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="generator" content="pdoc 15.0.0"/>
+    <meta name="generator" content="pdoc 15.0.1"/>
     <title>poetry.core.packages.package API documentation</title>
 
     <style>/*! * Bootstrap Reboot v5.0.0 (https://getbootstrap.com/) * Copyright 2011-2021 The Bootstrap Authors * Copyright 2011-2021 Twitter, Inc. * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE) * Forked from Normalize.css, licensed MIT (https://github.com/necolas/normalize.css/blob/master/LICENSE.md) */*,::after,::before{box-sizing:border-box}@media (prefers-reduced-motion:no-preference){:root{scroll-behavior:smooth}}body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";font-size:1rem;font-weight:400;line-height:1.5;color:#212529;background-color:#fff;-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent}hr{margin:1rem 0;color:inherit;background-color:currentColor;border:0;opacity:.25}hr:not([size]){height:1px}h1,h2,h3,h4,h5,h6{margin-top:0;margin-bottom:.5rem;font-weight:500;line-height:1.2}h1{font-size:calc(1.375rem + 1.5vw)}@media (min-width:1200px){h1{font-size:2.5rem}}h2{font-size:calc(1.325rem + .9vw)}@media (min-width:1200px){h2{font-size:2rem}}h3{font-size:calc(1.3rem + .6vw)}@media (min-width:1200px){h3{font-size:1.75rem}}h4{font-size:calc(1.275rem + .3vw)}@media (min-width:1200px){h4{font-size:1.5rem}}h5{font-size:1.25rem}h6{font-size:1rem}p{margin-top:0;margin-bottom:1rem}abbr[data-bs-original-title],abbr[title]{-webkit-text-decoration:underline dotted;text-decoration:underline dotted;cursor:help;-webkit-text-decoration-skip-ink:none;text-decoration-skip-ink:none}address{margin-bottom:1rem;font-style:normal;line-height:inherit}ol,ul{padding-left:2rem}dl,ol,ul{margin-top:0;margin-bottom:1rem}ol ol,ol ul,ul ol,ul ul{margin-bottom:0}dt{font-weight:700}dd{margin-bottom:.5rem;margin-left:0}blockquote{margin:0 0 1rem}b,strong{font-weight:bolder}small{font-size:.875em}mark{padding:.2em;background-color:#fcf8e3}sub,sup{position:relative;font-size:.75em;line-height:0;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}a{color:#0d6efd;text-decoration:underline}a:hover{color:#0a58ca}a:not([href]):not([class]),a:not([href]):not([class]):hover{color:inherit;text-decoration:none}code,kbd,pre,samp{font-family:SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;font-size:1em;direction:ltr;unicode-bidi:bidi-override}pre{display:block;margin-top:0;margin-bottom:1rem;overflow:auto;font-size:.875em}pre code{font-size:inherit;color:inherit;word-break:normal}code{font-size:.875em;color:#d63384;word-wrap:break-word}a>code{color:inherit}kbd{padding:.2rem .4rem;font-size:.875em;color:#fff;background-color:#212529;border-radius:.2rem}kbd kbd{padding:0;font-size:1em;font-weight:700}figure{margin:0 0 1rem}img,svg{vertical-align:middle}table{caption-side:bottom;border-collapse:collapse}caption{padding-top:.5rem;padding-bottom:.5rem;color:#6c757d;text-align:left}th{text-align:inherit;text-align:-webkit-match-parent}tbody,td,tfoot,th,thead,tr{border-color:inherit;border-style:solid;border-width:0}label{display:inline-block}button{border-radius:0}button:focus:not(:focus-visible){outline:0}button,input,optgroup,select,textarea{margin:0;font-family:inherit;font-size:inherit;line-height:inherit}button,select{text-transform:none}[role=button]{cursor:pointer}select{word-wrap:normal}select:disabled{opacity:1}[list]::-webkit-calendar-picker-indicator{display:none}[type=button],[type=reset],[type=submit],button{-webkit-appearance:button}[type=button]:not(:disabled),[type=reset]:not(:disabled),[type=submit]:not(:disabled),button:not(:disabled){cursor:pointer}::-moz-focus-inner{padding:0;border-style:none}textarea{resize:vertical}fieldset{min-width:0;padding:0;margin:0;border:0}legend{float:left;width:100%;padding:0;margin-bottom:.5rem;font-size:calc(1.275rem + .3vw);line-height:inherit}@media (min-width:1200px){legend{font-size:1.5rem}}legend+*{clear:left}::-webkit-datetime-edit-day-field,::-webkit-datetime-edit-fields-wrapper,::-webkit-datetime-edit-hour-field,::-webkit-datetime-edit-minute,::-webkit-datetime-edit-month-field,::-webkit-datetime-edit-text,::-webkit-datetime-edit-year-field{padding:0}::-webkit-inner-spin-button{height:auto}[type=search]{outline-offset:-2px;-webkit-appearance:textfield}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-color-swatch-wrapper{padding:0}::file-selector-button{font:inherit}::-webkit-file-upload-button{font:inherit;-webkit-appearance:button}output{display:inline-block}iframe{border:0}summary{display:list-item;cursor:pointer}progress{vertical-align:baseline}[hidden]{display:none!important}</style>
@@ -24,9 +24,6 @@
 
             <h2>API Documentation</h2>
                 <ul class="memberlist">
-            <li>
-                    <a class="variable" href="#AUTHOR_REGEX">AUTHOR_REGEX</a>
-            </li>
             <li>
                     <a class="class" href="#Package">Package</a>
                             <ul class="memberlist">
@@ -59,6 +56,12 @@
                         </li>
                         <li>
                                 <a class="variable" href="#Package.readmes">readmes</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Package.readme_content_type">readme_content_type</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#Package.readme_content">readme_content</a>
                         </li>
                         <li>
                                 <a class="variable" href="#Package.extras">extras</a>
@@ -139,12 +142,6 @@
                                 <a class="variable" href="#Package.urls">urls</a>
                         </li>
                         <li>
-                                <a class="variable" href="#Package.category">category</a>
-                        </li>
-                        <li>
-                                <a class="variable" href="#Package.readme">readme</a>
-                        </li>
-                        <li>
                                 <a class="variable" href="#Package.yanked">yanked</a>
                         </li>
                         <li>
@@ -184,9 +181,6 @@
                                 <a class="function" href="#Package.to_dependency">to_dependency</a>
                         </li>
                         <li>
-                                <a class="function" href="#Package.with_python_versions">with_python_versions</a>
-                        </li>
-                        <li>
                                 <a class="function" href="#Package.satisfies">satisfies</a>
                         </li>
                         <li>
@@ -216,18 +210,6 @@
                 
                 
             </section>
-                <section id="AUTHOR_REGEX">
-                    <div class="attr variable">
-            <span class="name">AUTHOR_REGEX</span>        =
-<span class="default_value">re.compile(&#39;(?u)^(?P&lt;name&gt;[- .,\\w\\d\&#39;’\\&#34;():&amp;]+)(?: &lt;(?P&lt;email&gt;.+?)&gt;)?$&#39;)</span>
-
-        
-    </div>
-    <a class="headerlink" href="#AUTHOR_REGEX"></a>
-    
-    
-
-                </section>
                 <section id="Package">
                     <div class="attr class">
             
@@ -243,7 +225,7 @@
                             <div id="Package.__init__" class="classattr">
                                 <div class="attr function">
             
-        <span class="name">Package</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">name</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n"><a href="../constraints/version.html#Version">poetry.core.constraints.version.Version</a></span>,</span><span class="param">	<span class="n">pretty_version</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">source_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">source_url</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">source_reference</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">source_resolved_reference</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">source_subdirectory</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">features</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">develop</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">yanked</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span>)</span>
+        <span class="name">Package</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">name</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">version</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n"><a href="../constraints/version.html#Version">poetry.core.constraints.version.Version</a></span>,</span><span class="param">	<span class="n">source_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">source_url</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">source_reference</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">source_resolved_reference</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">source_subdirectory</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">features</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">develop</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">yanked</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span>)</span>
 
         
     </div>
@@ -257,7 +239,7 @@
                             <div id="Package.AVAILABLE_PYTHONS" class="classattr">
                                 <div class="attr variable">
             <span class="name">AVAILABLE_PYTHONS</span><span class="annotation">: ClassVar[set[str]]</span>        =
-<span class="default_value">{&#39;2&#39;, &#39;3.10&#39;, &#39;3&#39;, &#39;3.12&#39;, &#39;2.7&#39;, &#39;3.9&#39;, &#39;3.13&#39;, &#39;3.8&#39;, &#39;3.5&#39;, &#39;3.4&#39;, &#39;3.6&#39;, &#39;3.7&#39;, &#39;3.11&#39;}</span>
+<span class="default_value">{&#39;3.10&#39;, &#39;3.4&#39;, &#39;3.6&#39;, &#39;3.11&#39;, &#39;3.8&#39;, &#39;3.13&#39;, &#39;3.9&#39;, &#39;3.5&#39;, &#39;3.12&#39;, &#39;3&#39;, &#39;3.7&#39;, &#39;2&#39;, &#39;2.7&#39;}</span>
 
         
     </div>
@@ -345,11 +327,33 @@
                             </div>
                             <div id="Package.readmes" class="classattr">
                                 <div class="attr variable">
-            <span class="name">readmes</span><span class="annotation">: tuple[pathlib.Path, ...]</span>
+            <span class="name">readmes</span><span class="annotation">: tuple[pathlib._local.Path, ...]</span>
 
         
     </div>
     <a class="headerlink" href="#Package.readmes"></a>
+    
+    
+
+                            </div>
+                            <div id="Package.readme_content_type" class="classattr">
+                                <div class="attr variable">
+            <span class="name">readme_content_type</span><span class="annotation">: str | None</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Package.readme_content_type"></a>
+    
+    
+
+                            </div>
+                            <div id="Package.readme_content" class="classattr">
+                                <div class="attr variable">
+            <span class="name">readme_content</span><span class="annotation">: str | None</span>
+
+        
+    </div>
+    <a class="headerlink" href="#Package.readme_content"></a>
     
     
 
@@ -411,7 +415,7 @@
                             </div>
                             <div id="Package.root_dir" class="classattr">
                                 <div class="attr variable">
-            <span class="name">root_dir</span><span class="annotation">: pathlib.Path | None</span>
+            <span class="name">root_dir</span><span class="annotation">: pathlib._local.Path | None</span>
 
         
     </div>
@@ -560,7 +564,7 @@
     </div>
     <a class="headerlink" href="#Package.requires"></a>
     
-            <div class="docstring"><p>Returns the main dependencies</p>
+            <div class="docstring"><p>Returns the main dependencies.</p>
 </div>
 
 
@@ -573,7 +577,8 @@
     </div>
     <a class="headerlink" href="#Package.all_requires"></a>
     
-            <div class="docstring"><p>Returns the main dependencies and group dependencies.</p>
+            <div class="docstring"><p>Returns the main dependencies and group dependencies
+enriched with Poetry-specific information for locking.</p>
 </div>
 
 
@@ -640,28 +645,6 @@
         
     </div>
     <a class="headerlink" href="#Package.urls"></a>
-    
-    
-
-                            </div>
-                            <div id="Package.category" class="classattr">
-                                <div class="attr variable">
-            <span class="name">category</span><span class="annotation">: str</span>
-
-        
-    </div>
-    <a class="headerlink" href="#Package.category"></a>
-    
-    
-
-                            </div>
-                            <div id="Package.readme" class="classattr">
-                                <div class="attr variable">
-            <span class="name">readme</span><span class="annotation">: pathlib.Path | None</span>
-
-        
-    </div>
-    <a class="headerlink" href="#Package.readme"></a>
     
     
 
@@ -838,20 +821,6 @@ more the given, optional, groups.</p>
         
     </div>
     <a class="headerlink" href="#Package.to_dependency"></a>
-    
-    
-
-                            </div>
-                            <div id="Package.with_python_versions" class="classattr">
-                                <div class="attr function">
-                    <div class="decorator decorator-contextmanager">@contextmanager</div>
-
-        <span class="def">def</span>
-        <span class="name">with_python_versions</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">python_versions</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">Iterator</span><span class="p">[</span><span class="kc">None</span><span class="p">]</span>:</span></span>
-
-        
-    </div>
-    <a class="headerlink" href="#Package.with_python_versions"></a>
     
     
 

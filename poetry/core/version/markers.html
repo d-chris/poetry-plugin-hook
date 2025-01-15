@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="generator" content="pdoc 15.0.0"/>
+    <meta name="generator" content="pdoc 15.0.1"/>
     <title>poetry.core.version.markers API documentation</title>
 
     <style>/*! * Bootstrap Reboot v5.0.0 (https://getbootstrap.com/) * Copyright 2011-2021 The Bootstrap Authors * Copyright 2011-2021 Twitter, Inc. * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE) * Forked from Normalize.css, licensed MIT (https://github.com/necolas/normalize.css/blob/master/LICENSE.md) */*,::after,::before{box-sizing:border-box}@media (prefers-reduced-motion:no-preference){:root{scroll-behavior:smooth}}body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";font-size:1rem;font-weight:400;line-height:1.5;color:#212529;background-color:#fff;-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent}hr{margin:1rem 0;color:inherit;background-color:currentColor;border:0;opacity:.25}hr:not([size]){height:1px}h1,h2,h3,h4,h5,h6{margin-top:0;margin-bottom:.5rem;font-weight:500;line-height:1.2}h1{font-size:calc(1.375rem + 1.5vw)}@media (min-width:1200px){h1{font-size:2.5rem}}h2{font-size:calc(1.325rem + .9vw)}@media (min-width:1200px){h2{font-size:2rem}}h3{font-size:calc(1.3rem + .6vw)}@media (min-width:1200px){h3{font-size:1.75rem}}h4{font-size:calc(1.275rem + .3vw)}@media (min-width:1200px){h4{font-size:1.5rem}}h5{font-size:1.25rem}h6{font-size:1rem}p{margin-top:0;margin-bottom:1rem}abbr[data-bs-original-title],abbr[title]{-webkit-text-decoration:underline dotted;text-decoration:underline dotted;cursor:help;-webkit-text-decoration-skip-ink:none;text-decoration-skip-ink:none}address{margin-bottom:1rem;font-style:normal;line-height:inherit}ol,ul{padding-left:2rem}dl,ol,ul{margin-top:0;margin-bottom:1rem}ol ol,ol ul,ul ol,ul ul{margin-bottom:0}dt{font-weight:700}dd{margin-bottom:.5rem;margin-left:0}blockquote{margin:0 0 1rem}b,strong{font-weight:bolder}small{font-size:.875em}mark{padding:.2em;background-color:#fcf8e3}sub,sup{position:relative;font-size:.75em;line-height:0;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}a{color:#0d6efd;text-decoration:underline}a:hover{color:#0a58ca}a:not([href]):not([class]),a:not([href]):not([class]):hover{color:inherit;text-decoration:none}code,kbd,pre,samp{font-family:SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;font-size:1em;direction:ltr;unicode-bidi:bidi-override}pre{display:block;margin-top:0;margin-bottom:1rem;overflow:auto;font-size:.875em}pre code{font-size:inherit;color:inherit;word-break:normal}code{font-size:.875em;color:#d63384;word-wrap:break-word}a>code{color:inherit}kbd{padding:.2rem .4rem;font-size:.875em;color:#fff;background-color:#212529;border-radius:.2rem}kbd kbd{padding:0;font-size:1em;font-weight:700}figure{margin:0 0 1rem}img,svg{vertical-align:middle}table{caption-side:bottom;border-collapse:collapse}caption{padding-top:.5rem;padding-bottom:.5rem;color:#6c757d;text-align:left}th{text-align:inherit;text-align:-webkit-match-parent}tbody,td,tfoot,th,thead,tr{border-color:inherit;border-style:solid;border-width:0}label{display:inline-block}button{border-radius:0}button:focus:not(:focus-visible){outline:0}button,input,optgroup,select,textarea{margin:0;font-family:inherit;font-size:inherit;line-height:inherit}button,select{text-transform:none}[role=button]{cursor:pointer}select{word-wrap:normal}select:disabled{opacity:1}[list]::-webkit-calendar-picker-indicator{display:none}[type=button],[type=reset],[type=submit],button{-webkit-appearance:button}[type=button]:not(:disabled),[type=reset]:not(:disabled),[type=submit]:not(:disabled),button:not(:disabled){cursor:pointer}::-moz-focus-inner{padding:0;border-style:none}textarea{resize:vertical}fieldset{min-width:0;padding:0;margin:0;border:0}legend{float:left;width:100%;padding:0;margin-bottom:.5rem;font-size:calc(1.275rem + .3vw);line-height:inherit}@media (min-width:1200px){legend{font-size:1.5rem}}legend+*{clear:left}::-webkit-datetime-edit-day-field,::-webkit-datetime-edit-fields-wrapper,::-webkit-datetime-edit-hour-field,::-webkit-datetime-edit-minute,::-webkit-datetime-edit-month-field,::-webkit-datetime-edit-text,::-webkit-datetime-edit-year-field{padding:0}::-webkit-inner-spin-button{height:auto}[type=search]{outline-offset:-2px;-webkit-appearance:textfield}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-color-swatch-wrapper{padding:0}::file-selector-button{font:inherit}::-webkit-file-upload-button{font:inherit;-webkit-appearance:button}output{display:inline-block}iframe{border:0}summary{display:list-item;cursor:pointer}progress{vertical-align:baseline}[hidden]{display:none!important}</style>
@@ -25,19 +25,19 @@
             <h2>API Documentation</h2>
                 <ul class="memberlist">
             <li>
-                    <a class="class" href="#InvalidMarker">InvalidMarker</a>
+                    <a class="class" href="#InvalidMarkerError">InvalidMarkerError</a>
                             <ul class="memberlist">
                 </ul>
 
             </li>
             <li>
-                    <a class="class" href="#UndefinedComparison">UndefinedComparison</a>
+                    <a class="class" href="#UndefinedComparisonError">UndefinedComparisonError</a>
                             <ul class="memberlist">
                 </ul>
 
             </li>
             <li>
-                    <a class="class" href="#UndefinedEnvironmentName">UndefinedEnvironmentName</a>
+                    <a class="class" href="#UndefinedEnvironmentNameError">UndefinedEnvironmentNameError</a>
                             <ul class="memberlist">
                 </ul>
 
@@ -79,6 +79,9 @@
                                 <a class="function" href="#BaseMarker.only">only</a>
                         </li>
                         <li>
+                                <a class="function" href="#BaseMarker.reduce_by_python_constraint">reduce_by_python_constraint</a>
+                        </li>
+                        <li>
                                 <a class="function" href="#BaseMarker.invert">invert</a>
                         </li>
                 </ul>
@@ -109,6 +112,9 @@
                                 <a class="function" href="#AnyMarker.only">only</a>
                         </li>
                         <li>
+                                <a class="function" href="#AnyMarker.reduce_by_python_constraint">reduce_by_python_constraint</a>
+                        </li>
+                        <li>
                                 <a class="function" href="#AnyMarker.invert">invert</a>
                         </li>
                 </ul>
@@ -137,6 +143,9 @@
                         </li>
                         <li>
                                 <a class="function" href="#EmptyMarker.only">only</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#EmptyMarker.reduce_by_python_constraint">reduce_by_python_constraint</a>
                         </li>
                         <li>
                                 <a class="function" href="#EmptyMarker.invert">invert</a>
@@ -170,6 +179,9 @@
                         </li>
                         <li>
                                 <a class="variable" href="#SingleMarker.value">value</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#SingleMarker.reduce_by_python_constraint">reduce_by_python_constraint</a>
                         </li>
                         <li>
                                 <a class="function" href="#SingleMarker.invert">invert</a>
@@ -250,6 +262,9 @@
                                 <a class="function" href="#MultiMarker.only">only</a>
                         </li>
                         <li>
+                                <a class="function" href="#MultiMarker.reduce_by_python_constraint">reduce_by_python_constraint</a>
+                        </li>
+                        <li>
                                 <a class="function" href="#MultiMarker.invert">invert</a>
                         </li>
                 </ul>
@@ -290,6 +305,9 @@
                         </li>
                         <li>
                                 <a class="function" href="#MarkerUnion.only">only</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#MarkerUnion.reduce_by_python_constraint">reduce_by_python_constraint</a>
                         </li>
                         <li>
                                 <a class="function" href="#MarkerUnion.invert">invert</a>
@@ -333,45 +351,45 @@
                 
                 
             </section>
-                <section id="InvalidMarker">
+                <section id="InvalidMarkerError">
                     <div class="attr class">
             
     <span class="def">class</span>
-    <span class="name">InvalidMarker</span><wbr>(<span class="base">builtins.ValueError</span>):
+    <span class="name">InvalidMarkerError</span><wbr>(<span class="base">builtins.ValueError</span>):
 
         
     </div>
-    <a class="headerlink" href="#InvalidMarker"></a>
+    <a class="headerlink" href="#InvalidMarkerError"></a>
     
             <div class="docstring"><p>An invalid marker was found, users should refer to PEP 508.</p>
 </div>
 
 
                 </section>
-                <section id="UndefinedComparison">
+                <section id="UndefinedComparisonError">
                     <div class="attr class">
             
     <span class="def">class</span>
-    <span class="name">UndefinedComparison</span><wbr>(<span class="base">builtins.ValueError</span>):
+    <span class="name">UndefinedComparisonError</span><wbr>(<span class="base">builtins.ValueError</span>):
 
         
     </div>
-    <a class="headerlink" href="#UndefinedComparison"></a>
+    <a class="headerlink" href="#UndefinedComparisonError"></a>
     
             <div class="docstring"><p>An invalid operation was attempted on a value that doesn't support it.</p>
 </div>
 
 
                 </section>
-                <section id="UndefinedEnvironmentName">
+                <section id="UndefinedEnvironmentNameError">
                     <div class="attr class">
             
     <span class="def">class</span>
-    <span class="name">UndefinedEnvironmentName</span><wbr>(<span class="base">builtins.ValueError</span>):
+    <span class="name">UndefinedEnvironmentNameError</span><wbr>(<span class="base">builtins.ValueError</span>):
 
         
     </div>
-    <a class="headerlink" href="#UndefinedEnvironmentName"></a>
+    <a class="headerlink" href="#UndefinedEnvironmentNameError"></a>
     
             <div class="docstring"><p>A name was attempted to be used that does not exist inside of the
 environment.</p>
@@ -395,7 +413,7 @@ environment.</p>
                 <section id="PYTHON_VERSION_MARKERS">
                     <div class="attr variable">
             <span class="name">PYTHON_VERSION_MARKERS</span>        =
-<span class="default_value">{&#39;python_full_version&#39;, &#39;python_version&#39;}</span>
+<span class="default_value">{&#39;python_version&#39;, &#39;python_full_version&#39;}</span>
 
         
     </div>
@@ -493,7 +511,7 @@ second element: number of single markers, where SingleMarkerLike count as 1</p>
                     <div class="decorator decorator-abstractmethod">@abstractmethod</div>
 
         <span class="def">def</span>
-        <span class="name">validate</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">environment</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="nb">bool</span>:</span></span>
+        <span class="name">validate</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">environment</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="nb">bool</span>:</span></span>
 
         
     </div>
@@ -540,6 +558,20 @@ second element: number of single markers, where SingleMarkerLike count as 1</p>
         
     </div>
     <a class="headerlink" href="#BaseMarker.only"></a>
+    
+    
+
+                            </div>
+                            <div id="BaseMarker.reduce_by_python_constraint" class="classattr">
+                                <div class="attr function">
+                    <div class="decorator decorator-abstractmethod">@abstractmethod</div>
+
+        <span class="def">def</span>
+        <span class="name">reduce_by_python_constraint</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="bp">self</span>,</span><span class="param">	<span class="n">python_constraint</span><span class="p">:</span> <span class="n"><a href="../constraints/version.html#VersionConstraint">poetry.core.constraints.version.VersionConstraint</a></span></span><span class="return-annotation">) -> <span class="n"><a href="#BaseMarker">BaseMarker</a></span>:</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#BaseMarker.reduce_by_python_constraint"></a>
     
     
 
@@ -617,7 +649,7 @@ inheritance.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">validate</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">environment</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="nb">bool</span>:</span></span>
+        <span class="name">validate</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">environment</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="nb">bool</span>:</span></span>
 
         
     </div>
@@ -661,6 +693,19 @@ inheritance.</p>
         
     </div>
     <a class="headerlink" href="#AnyMarker.only"></a>
+    
+    
+
+                            </div>
+                            <div id="AnyMarker.reduce_by_python_constraint" class="classattr">
+                                <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">reduce_by_python_constraint</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="bp">self</span>,</span><span class="param">	<span class="n">python_constraint</span><span class="p">:</span> <span class="n"><a href="../constraints/version.html#VersionConstraint">poetry.core.constraints.version.VersionConstraint</a></span></span><span class="return-annotation">) -> <span class="n"><a href="#BaseMarker">BaseMarker</a></span>:</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#AnyMarker.reduce_by_python_constraint"></a>
     
     
 
@@ -747,7 +792,7 @@ inheritance.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">validate</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">environment</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="nb">bool</span>:</span></span>
+        <span class="name">validate</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">environment</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="nb">bool</span>:</span></span>
 
         
     </div>
@@ -791,6 +836,19 @@ inheritance.</p>
         
     </div>
     <a class="headerlink" href="#EmptyMarker.only"></a>
+    
+    
+
+                            </div>
+                            <div id="EmptyMarker.reduce_by_python_constraint" class="classattr">
+                                <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">reduce_by_python_constraint</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="bp">self</span>,</span><span class="param">	<span class="n">python_constraint</span><span class="p">:</span> <span class="n"><a href="../constraints/version.html#VersionConstraint">poetry.core.constraints.version.VersionConstraint</a></span></span><span class="return-annotation">) -> <span class="n"><a href="#BaseMarker">BaseMarker</a></span>:</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#EmptyMarker.reduce_by_python_constraint"></a>
     
     
 
@@ -869,6 +927,7 @@ inheritance.</p>
                 <dd id="SingleMarkerLike.without_extras" class="function"><a href="#BaseMarker.without_extras">without_extras</a></dd>
                 <dd id="SingleMarkerLike.exclude" class="function"><a href="#BaseMarker.exclude">exclude</a></dd>
                 <dd id="SingleMarkerLike.only" class="function"><a href="#BaseMarker.only">only</a></dd>
+                <dd id="SingleMarkerLike.reduce_by_python_constraint" class="function"><a href="#BaseMarker.reduce_by_python_constraint">reduce_by_python_constraint</a></dd>
                 <dd id="SingleMarkerLike.invert" class="function"><a href="#BaseMarker.invert">invert</a></dd>
 
             </div>
@@ -893,7 +952,7 @@ inheritance.</p>
                             <div id="SingleMarker.__init__" class="classattr">
                                 <div class="attr function">
             
-        <span class="name">SingleMarker</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">name</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">constraint</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n"><a href="../constraints/generic.html#BaseConstraint">poetry.core.constraints.generic.BaseConstraint</a></span> <span class="o">|</span> <span class="n"><a href="../constraints/version.html#VersionConstraint">poetry.core.constraints.version.VersionConstraint</a></span></span>)</span>
+        <span class="name">SingleMarker</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">name</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">constraint</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n"><a href="../constraints/generic.html#BaseConstraint">poetry.core.constraints.generic.BaseConstraint</a></span> <span class="o">|</span> <span class="n"><a href="../constraints/version.html#VersionConstraint">poetry.core.constraints.version.VersionConstraint</a></span>,</span><span class="param">	<span class="n">swapped_name_value</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span>)</span>
 
         
     </div>
@@ -932,6 +991,19 @@ inheritance.</p>
         
     </div>
     <a class="headerlink" href="#SingleMarker.value"></a>
+    
+    
+
+                            </div>
+                            <div id="SingleMarker.reduce_by_python_constraint" class="classattr">
+                                <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">reduce_by_python_constraint</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="bp">self</span>,</span><span class="param">	<span class="n">python_constraint</span><span class="p">:</span> <span class="n"><a href="../constraints/version.html#VersionConstraint">poetry.core.constraints.version.VersionConstraint</a></span></span><span class="return-annotation">) -> <span class="n"><a href="#BaseMarker">BaseMarker</a></span>:</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#SingleMarker.reduce_by_python_constraint"></a>
     
     
 
@@ -1050,6 +1122,7 @@ second element: number of single markers, where SingleMarkerLike count as 1</p>
                 <dd id="AtomicMultiMarker.without_extras" class="function"><a href="#SingleMarkerLike.without_extras">without_extras</a></dd>
                 <dd id="AtomicMultiMarker.exclude" class="function"><a href="#SingleMarkerLike.exclude">exclude</a></dd>
                 <dd id="AtomicMultiMarker.only" class="function"><a href="#SingleMarkerLike.only">only</a></dd>
+                <dd id="AtomicMultiMarker.reduce_by_python_constraint" class="function"><a href="#SingleMarkerLike.reduce_by_python_constraint">reduce_by_python_constraint</a></dd>
                 <dd id="AtomicMultiMarker.intersect" class="function"><a href="#SingleMarkerLike.intersect">intersect</a></dd>
                 <dd id="AtomicMultiMarker.union" class="function"><a href="#SingleMarkerLike.union">union</a></dd>
 
@@ -1140,6 +1213,7 @@ second element: number of single markers, where SingleMarkerLike count as 1</p>
                 <dd id="AtomicMarkerUnion.without_extras" class="function"><a href="#SingleMarkerLike.without_extras">without_extras</a></dd>
                 <dd id="AtomicMarkerUnion.exclude" class="function"><a href="#SingleMarkerLike.exclude">exclude</a></dd>
                 <dd id="AtomicMarkerUnion.only" class="function"><a href="#SingleMarkerLike.only">only</a></dd>
+                <dd id="AtomicMarkerUnion.reduce_by_python_constraint" class="function"><a href="#SingleMarkerLike.reduce_by_python_constraint">reduce_by_python_constraint</a></dd>
                 <dd id="AtomicMarkerUnion.intersect" class="function"><a href="#SingleMarkerLike.intersect">intersect</a></dd>
                 <dd id="AtomicMarkerUnion.union" class="function"><a href="#SingleMarkerLike.union">union</a></dd>
 
@@ -1275,7 +1349,7 @@ second element: number of single markers, where SingleMarkerLike count as 1</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">validate</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">environment</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="nb">bool</span>:</span></span>
+        <span class="name">validate</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">environment</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="nb">bool</span>:</span></span>
 
         
     </div>
@@ -1319,6 +1393,19 @@ second element: number of single markers, where SingleMarkerLike count as 1</p>
         
     </div>
     <a class="headerlink" href="#MultiMarker.only"></a>
+    
+    
+
+                            </div>
+                            <div id="MultiMarker.reduce_by_python_constraint" class="classattr">
+                                <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">reduce_by_python_constraint</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="bp">self</span>,</span><span class="param">	<span class="n">python_constraint</span><span class="p">:</span> <span class="n"><a href="../constraints/version.html#VersionConstraint">poetry.core.constraints.version.VersionConstraint</a></span></span><span class="return-annotation">) -> <span class="n"><a href="#BaseMarker">BaseMarker</a></span>:</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#MultiMarker.reduce_by_python_constraint"></a>
     
     
 
@@ -1470,7 +1557,7 @@ second element: number of single markers, where SingleMarkerLike count as 1</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">validate</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">environment</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="nb">bool</span>:</span></span>
+        <span class="name">validate</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">environment</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="nb">bool</span>:</span></span>
 
         
     </div>
@@ -1518,6 +1605,19 @@ second element: number of single markers, where SingleMarkerLike count as 1</p>
     
 
                             </div>
+                            <div id="MarkerUnion.reduce_by_python_constraint" class="classattr">
+                                <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">reduce_by_python_constraint</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="bp">self</span>,</span><span class="param">	<span class="n">python_constraint</span><span class="p">:</span> <span class="n"><a href="../constraints/version.html#VersionConstraint">poetry.core.constraints.version.VersionConstraint</a></span></span><span class="return-annotation">) -> <span class="n"><a href="#BaseMarker">BaseMarker</a></span>:</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#MarkerUnion.reduce_by_python_constraint"></a>
+    
+    
+
+                            </div>
                             <div id="MarkerUnion.invert" class="classattr">
                                 <div class="attr function">
             
@@ -1544,7 +1644,7 @@ second element: number of single markers, where SingleMarkerLike count as 1</p>
                 </section>
                 <section id="parse_marker">
                     <div class="attr function">
-                    <div class="decorator decorator-functools.lru_cache">@functools.lru_cache(maxsize=None)</div>
+                    <div class="decorator decorator-functools.cache">@functools.cache</div>
 
         <span class="def">def</span>
         <span class="name">parse_marker</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">marker</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n"><a href="#BaseMarker">BaseMarker</a></span>:</span></span>
@@ -1558,7 +1658,7 @@ second element: number of single markers, where SingleMarkerLike count as 1</p>
                 </section>
                 <section id="cnf">
                     <div class="attr function">
-                    <div class="decorator decorator-functools.lru_cache">@functools.lru_cache(maxsize=None)</div>
+                    <div class="decorator decorator-functools.cache">@functools.cache</div>
 
         <span class="def">def</span>
         <span class="name">cnf</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">marker</span><span class="p">:</span> <span class="n"><a href="#BaseMarker">BaseMarker</a></span></span><span class="return-annotation">) -> <span class="n"><a href="#BaseMarker">BaseMarker</a></span>:</span></span>
@@ -1574,7 +1674,7 @@ second element: number of single markers, where SingleMarkerLike count as 1</p>
                 </section>
                 <section id="dnf">
                     <div class="attr function">
-                    <div class="decorator decorator-functools.lru_cache">@functools.lru_cache(maxsize=None)</div>
+                    <div class="decorator decorator-functools.cache">@functools.cache</div>
 
         <span class="def">def</span>
         <span class="name">dnf</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">marker</span><span class="p">:</span> <span class="n"><a href="#BaseMarker">BaseMarker</a></span></span><span class="return-annotation">) -> <span class="n"><a href="#BaseMarker">BaseMarker</a></span>:</span></span>
